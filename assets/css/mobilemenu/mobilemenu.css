@@ -1,0 +1,77 @@
+.left_navigation {
+  position: absolute;
+  width: 50%;
+  min-height: 600px;
+  background-color: white;
+  padding: 5px;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  /* background-color: var(--brand-color); */
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  background-image: url("@/assets/images/violet.jpg");
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+}
+.user_image {
+  display: flex;
+}
+.user_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.user_image h6 {
+  padding: 20px;
+}
+.user_image h6 a {
+  color: white;
+}
+.user_image h6 a:hover {
+  color: var(--brand-color);
+}
+.media_body {
+  height: 100%;
+}
+.tree_ul {
+  transition: all 1s;
+}
+.tree_li {
+  height: 30px;
+  overflow: hidden;
+  transition: inherit;
+}
+.tree_li:hover {
+  height: 90px;
+}
+.tree_li:hover .fa-chevron-right {
+  transform: rotate(90deg);
+}
+.tree_li a {
+  color: white !important;
+  display: block;
+  padding: 5px;
+}
+.tree_li a:hover {
+  color: var(--brand-color) !important;
+}
+.tree_li_ul_li {
+  margin-left: 5px;
+}
+/* .tree_li_ul_li a:hover {
+  color: white !important;
+} */
+/* .tree_li:hover .tree_li_ul {
+  background-color: var(--brand-color);
+} */
+.fa-chevron-right {
+  position: absolute;
+  right: 2px;
+  top: 10px;
+}
+.navbar-toggler {
+  display: none;
+}

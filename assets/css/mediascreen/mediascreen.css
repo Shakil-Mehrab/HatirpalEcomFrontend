@@ -1,0 +1,51 @@
+@media only screen and (max-width: 768px) {
+  .search {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .top_header_right {
+    flex-wrap: nowrap;
+  }
+  .mobile_menu_option {
+    display: flex;
+    align-items: center;
+  }
+  .hatirpal_info {
+    display: none;
+  }
+  .category_menu_option {
+    display: none;
+  }
+  .lower_header {
+    position: unset;
+  }
+  .trending .trending_ul {
+    display: flex;
+  }
+  .left_heading {
+    height: 40px;
+  }
+  .left_category_heading h5 {
+    margin-left: 5px;
+  }
+  .left_category_heading a {
+    margin-right: 5px;
+    bottom: 8px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .cart {
+    overflow: unset !important;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .trending .mymarket_ul {
+    display: flex;
+  }
+  .trending .mymarket_ul li {
+    width: 50%;
+  }
+  .trending .trending_ul li {
+    width: 50%;
+  }
+}

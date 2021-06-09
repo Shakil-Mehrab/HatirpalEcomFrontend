@@ -1,0 +1,90 @@
+/* global  */
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+:root {
+  --link-color: #666;
+  --link-violet: violet;
+  --brand-color: violet;
+  --extra-violet: rgb(57, 3, 68);
+  --transition: all 0.5s ease-in-out;
+  --fine-border: 1px solid rgb(212 212 210);
+  --button-border: 1px solid #bd37b3;
+
+  --fds-gray-10: #ebedf0;
+  --fds-gray-20: #dadde1;
+  --fds-gray-25: #ccd0d5;
+  --fds-gray-30: #bec3c9;
+}
+body {
+  font-family: "Itim", cursive;
+  background-color: var(--fds-gray-25);
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #333;
+  margin: 0px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* background-image: url("@/assets/images/background.jpeg"); */
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: var(--transition);
+}
+a:hover {
+  color: var(--link-violet);
+}
+.has-error input {
+  border: 1px solid red;
+}
+.brand_round_button {
+  background-color: var(--brand-color);
+  color: white;
+  border-radius: 10px;
+  padding: 0 8px;
+  border: var(--button-border);
+  overflow: hidden;
+}
+.brand_button {
+  background-color: var(--brand-color);
+  color: white;
+  border-radius: 5px;
+  padding: 0 5px;
+  border: var(--button-border);
+  overflow: hidden;
+}
+.brand_shadow {
+  box-shadow: 0 0.1rem 0.25rem var(--extra-violet) !important;
+}
+.brand_button:hover {
+  transition: var(--transition);
+  color: var(--extra-violet);
+}
+.brand_round_button:hover {
+  transition: var(--transition);
+  color: var(--extra-violet);
+}
+.has-error label {
+  color: red;
+}
+.hover_shadow:hover {
+  box-shadow: 0.125px 1px 5px var(--brand-color) !important;
+  padding-bottom: 1px;
+}
+/* header  */
+.header_full {
+  width: 100vw;
+}

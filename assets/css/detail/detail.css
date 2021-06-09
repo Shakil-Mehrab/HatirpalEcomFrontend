@@ -1,0 +1,62 @@
+.size,
+.color {
+  display: flex;
+}
+.size strong,
+.color strong {
+  white-space: nowrap;
+}
+.size ul,
+.color ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.size ul li,
+.color ul li {
+  border: 1px solid var(--brand-color);
+}
+.color ul li {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+.quantity {
+  overflow: hidden;
+}
+.quantity input {
+  border: 1px solid var(--brand-color);
+  outline: none;
+  border-radius: 2px;
+}
+.quantity a {
+  background: var(--brand-color);
+}
+.toggle_option ul {
+  display: flex;
+}
+.toggle_option ul li {
+  border: 1px solid var(--brand-color);
+}
+.toggle_option_li {
+  background-color: var(--brand-color);
+}
+.toggle_option_li a {
+  color: white;
+}
+.comment textarea {
+  outline: none;
+  border: 1px solid var(--brand-color);
+}
+.comment .user_comment {
+  border: 1px solid var(--brand-color);
+  border-radius: 2px;
+}
+.user_comment ul li p {
+  margin-left: 40px;
+}
+.user_comment .reply {
+  margin-left: 80px;
+}
+.certificket img {
+  padding-right: 1rem;
+}
