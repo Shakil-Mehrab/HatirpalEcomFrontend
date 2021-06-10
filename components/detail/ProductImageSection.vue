@@ -1,22 +1,22 @@
 <template>
   <div>
     <div class="relative">
-      <!-- <zoom-on-hover
-        v-if="idOfImage"
-        :img-normal="idOfImage"
-        :img-zoom="idOfImage"
+      <zoom-on-hover
+        v-if="idOfImage.thumbnail"
+        :img-normal="idOfImage.thumbnail"
+        :img-zoom="idOfImage.thumbnail"
         :scale="2.5"
         :disabled="false"
         @loaded="onload"
         @resized="onresize"
       >
-      </zoom-on-hover> -->
-      <div class="absolute bottom-0 left-0 right-0" align="center">
-        <!-- <span class="text-sm text-customcolor-300">{{ serial }}/7</span> -->
+      </zoom-on-hover>
+      <div class="" align="center">
+        <span class="">{{ serial }}/{{data.productImages.length}}</span>
       </div>
     </div>
     <br />
-    <div>
+    <div v-if="data.productImages.length">
       <client-only>
         <carousel
           class="product-detail-slider"
@@ -24,10 +24,10 @@
           :loop="true"
           :navigationEnabled="true"
         >
-          <slide v-for="n in 10" :key="n">
+          <slide v-for="(productImage,index) in data.productImages" :key="index">
             <div class="mx-1">
-              <a href="#" @mouseover="selectImage(n,1)">
-                <img :src="idOfImage" width="100%" alt="" />
+              <a href="#" @mouseover="selectImage(productImage, index+1)">
+                <img :src="productImage.thumbnail" width="100%" alt="" />
               </a>
             </div>
           </slide>
@@ -43,23 +43,29 @@
 export default {
   data() {
     return {
-      idOfImage: 'https://img.alicdn.com/tfs/TB1J5jev7voK1RjSZPfXXXPKFXa-300-320.png',
-      serial: 1
+      idOfImage: this.data,
+      serial: 1,
     };
   },
   props: {
-    // product: {
-    //   required: false,
-    //   type: Object
-    // }
+    data: {
+      required: true,
+      type: Object
+    }
   },
   methods: {
     selectImage(img, serial) {
       this.idOfImage = img;
       this.serial = serial;
-    }
-  }
-}
+    },
+    onload() {
+
+    },
+     onresize() {
+
+    },
+  },
+};
 </script>
 <style>
 .product-detail-slider .VueCarousel-navigation {
@@ -75,7 +81,7 @@ export default {
 }
 .product-detail-slider .VueCarousel-navigation-prev {
   border: none !important;
-  left: 24px!important;
+  left: 24px !important;
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;

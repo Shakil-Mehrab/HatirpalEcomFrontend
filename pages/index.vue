@@ -24,7 +24,7 @@
         <NewArrival v-for="n in 3" :key="n" />
       </div>
     </div>
-    <br>
+    <br />
     <div class="container mx-auto shadow-sm">
       <div class="row bg-white">
         <CategoryHeading title="Electronics" />
@@ -41,7 +41,7 @@
         <CategoryHeadingLeft title="Fashion" />
         <div class="col-md-9">
           <SlideSectionOne
-            endpoints="product?categories=fashion&per-page=20"
+            endpoints="product?categories=food&per-page=20"
             :short_des="true"
             :skeleton="6"
             :perpageInLarge="6"

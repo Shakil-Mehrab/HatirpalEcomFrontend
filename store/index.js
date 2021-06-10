@@ -23,7 +23,7 @@ export const mutations = {
 // Actions
 export const actions = {
     async nuxtServerInit({ commit }, { app }) {
-        let selectedCategoryResponse = await app.$axios.$get('category?selects=norwood,amina')
+        let selectedCategoryResponse = await app.$axios.$get('category?selects=food')
         let treeCategoryResponse = await app.$axios.$get('category')
 
         commit('SET_SELECTEDCATEGORIES', selectedCategoryResponse.data)

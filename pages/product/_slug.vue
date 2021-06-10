@@ -7,7 +7,7 @@
          
       </div>
       <div class="col-md-6">
-        <ProductImageSection />
+        <ProductImageSection :data="data"/>
       </div>
       <div class="col-md-6">
         <ProductDetailSection :data="data"/>
