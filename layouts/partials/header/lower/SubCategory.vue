@@ -1,13 +1,13 @@
 <template>
-  <div v-if="subCategory == category.id && category.children.length">
-    <div class="sub_category">
+  <div >
+    <div class="sub_category" v-if="category.children.length">
       <div class="row">
         <div class="col-md-6" v-for="child in category.children" :key="child.id">
           <nuxt-link to="" exact target="_blank" class="sub_category_a">
            <h6>
               {{child.name}}
                </h6>
-               <h5>
+               <!-- <h5>
                   <svg
               xmlns="http://www.w3.org/2000/svg"
               class="subcategory_svg"
@@ -22,7 +22,7 @@
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-               </h5>
+               </h5> -->
           
           </nuxt-link>
           <div class="child_category">
@@ -42,10 +42,6 @@
 <script>
 export default {
   props: {
-    subCategory: {
-      required: true,
-      type: Number,
-    },
     category: {
       required: true,
       type: Object,

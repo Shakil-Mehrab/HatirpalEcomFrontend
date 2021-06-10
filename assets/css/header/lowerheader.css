@@ -18,12 +18,13 @@
   display: flex;
   align-items: center;
 }
-.category_menu_option {
+
+.category_menu_text_icon {
   display: flex;
   align-items: center;
   color: white;
 }
-.category_menu_option:hover {
+.category_menu_text_icon:hover {
   color: var(--extra-violet);
 }
 .category_menu_icon {
@@ -43,6 +44,14 @@
   box-shadow: 0.125rem 0.125rem 0.125rem rgba(0, 0, 0, 0.075) !important;
   width: 300px;
   height: 100vw;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.category_menu:hover .root_category{
+  visibility: visible;
+  opacity: 1;
+  transition: .5s all ease-in-out;
 }
 .root_category ul {
   margin-left: 10px;
@@ -76,6 +85,13 @@
   width: 150%;
   height: 100vw;
   z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+}
+.root_category_li:hover .sub_category{
+  visibility: visible;
+  opacity: 1;
+  transition: .5s all ease-in-out;
 }
 .sub_category_a {
   background-color: var(--brand-color);

@@ -3,8 +3,7 @@
     <li  class="root_category_li"
       v-for="category in categories"
       :key="category.id"
-      @mouseover="subCategoryUl(category.id)"
-      @mouseleave="subCategoryUlHide()"
+     
     >
       <nuxt-link to="" exact target="_blank">
         <h6>{{category.name}}</h6>
@@ -23,7 +22,7 @@
         </svg>
       </nuxt-link>
         
-        <SubCategory :subCategory="subCategory" :category='category' />
+        <SubCategory :category='category' />
       
     </li>
   </ul>
@@ -32,11 +31,7 @@
 import SubCategory from "@/layouts/partials/header/lower/SubCategory";
 
 export default {
-  data() {
-    return {
-      subCategory: 0,
-    };
-  },
+ 
   props: {
     categories: {
       required: true,
@@ -47,12 +42,7 @@ export default {
     SubCategory,
   },
   methods: {
-    subCategoryUl(arg) {
-      this.subCategory = arg;
-    },
-    subCategoryUlHide() {
-      this.subCategory = 0;
-    },
+   
     // link(arg) {
     //   return {
     //     name: "",
