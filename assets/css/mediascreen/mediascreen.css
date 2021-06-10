@@ -38,6 +38,18 @@
     overflow: unset !important;
   }
 }
+@media only screen and (max-width: 768px) {
+  .newarrival_row .col-md-4 {
+    padding: 0 !important;
+    margin: 10px 0;
+  }
+  .root_category {
+    top: 200px;
+  }
+  .sub_category {
+    width: 90%;
+  }
+}
 @media only screen and (max-width: 576px) {
   .trending .mymarket_ul {
     display: flex;
@@ -47,5 +59,11 @@
   }
   .trending .trending_ul li {
     width: 50%;
+  }
+  .sub_category {
+    display: none;
+  }
+  .root_category_li:hover .sub_category {
+    display: none;
   }
 }

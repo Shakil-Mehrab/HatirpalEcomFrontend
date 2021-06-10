@@ -11,7 +11,7 @@
         @resized="onresize"
       >
       </zoom-on-hover>
-      <div class="" align="center">
+      <div class="" align="center" v-if="data.productImages.length">
         <span class="">{{ serial }}/{{data.productImages.length}}</span>
       </div>
     </div>

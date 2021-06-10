@@ -1,16 +1,14 @@
 <template>
   <fixed-header :threshold="100">
     <header class="bg-white shadow-sm navbar">
-        <div class="container-fluid header_full">
+        <div class="container-fluid">
           <TopHeader />
         </div>
-        <div class="header_full remove_lowheader_from_fixed" >
+        <div class="container-fluid" >
             <hr>
         </div>
-        <div class="low_head_back_img remove_lowheader_from_fixed">
-          <div class="container-fluid">
+          <div class="container-fluid low_head_back_img">
           <LowerHeader />
-        </div>
         </div>
     </header>
   </fixed-header>

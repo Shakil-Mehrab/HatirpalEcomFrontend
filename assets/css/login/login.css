@@ -1,0 +1,21 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+}
+.login .email label {
+  width: 30%;
+}
+.login .password label {
+  width: 30%;
+}
+.login .email {
+  display: flex;
+  align-items: center;
+}
+.login .password {
+  display: flex;
+  align-items: center;
+}

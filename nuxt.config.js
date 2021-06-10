@@ -27,6 +27,7 @@ export default {
     "@/assets/css/detail/detail.css",
     "@/assets/css/cart/cart.css",
     "@/assets/css/category/category.css",
+    "@/assets/css/login/login.css",
 
     "@/assets/css/footer/footer.css",
     "@/assets/css/mobilemenu/mobilemenu.css",
