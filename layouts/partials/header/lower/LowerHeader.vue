@@ -2,10 +2,9 @@
   <div class="row lower_header" v-click-outside="hide" >
     <div
       class="col-md-2 col-sm-6 col-6 category_menu"
-      @mouseover="rootCategory = true"
-      @mouseleave="rootCategory = false"
+
     >
-      <a href="#" class="category_menu_option">
+      <a href="#" class="category_menu_text_icon">
         <svg
           class="category_menu_icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +37,7 @@
       </a>
       <div
         class="root_category"
-       v-show="rootCategory"
-      >
+          >
         <RootCategory :categories="treeCategories"/>
       </div>
     </div>
@@ -80,7 +78,6 @@ export default {
   data() {
     return {
       menuList: false,
-      rootCategory: false,
     };
   },
   components: {
