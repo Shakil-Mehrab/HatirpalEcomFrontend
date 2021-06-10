@@ -41,7 +41,7 @@
         <CategoryHeadingLeft title="Fashion" />
         <div class="col-md-9">
           <SlideSectionOne
-            endpoints="product?categories=food&per-page=20"
+            endpoints="product?categories=food,fashion&per-page=20"
             :short_des="true"
             :skeleton="6"
             :perpageInLarge="6"
