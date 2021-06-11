@@ -1,21 +1,37 @@
+.login_center_div {
+  display: flex;
+  justify-content: center;
+}
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 320px;
+  min-height: 300px;
+  width: 600px;
+  background-color: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
 }
-.login .email label {
+
+.login .login_field label {
   width: 30%;
 }
-.login .password label {
-  width: 30%;
-}
-.login .email {
+
+.login .login_field {
   display: flex;
   align-items: center;
+  color: var(--brand-color);
+  margin-top: 10px;
 }
-.login .password {
-  display: flex;
-  align-items: center;
+.already_have_account a {
+  font-size: 20px;
+  color: var(--brand-color);
+}
+.already_have_account a:hover {
+  color: var(--extra-violet);
+}
+.login form {
+  width: 100%;
 }

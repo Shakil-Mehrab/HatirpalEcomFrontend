@@ -1,9 +1,9 @@
 <template>
     <div class="row top_header">
       <div class="col-md-2 col-sm-12 logo">
-        <a href="/">
+        <nuxt-link :to="{path:'/'}" exact>
           <img src="~/assets/images/logo.PNG" width="100%" alt="Logo"/>
-        </a>
+        </nuxt-link>
       </div>
       <div class="search col-md-6 col-sm-12">
         <SearchBar />
@@ -12,7 +12,7 @@
       <div class="col-md-4 col-sm-12">
         <ul class="top_header_right">
           <li class="mx-2">
-            <a href="" class="flex">
+            <nuxt-link :to="{path:'/auth/login'}" exact class="flex">
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@
               <span class="top_right_option"
                 >Sign In
               </span>
-            </a>
+            </nuxt-link>
           </li>
           <li class="mx-2">
             <a href="">
