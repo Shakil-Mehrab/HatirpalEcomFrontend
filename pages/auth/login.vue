@@ -23,6 +23,9 @@
               placeholder="Password"
             />
           </div>
+           <div class="col-md-12 text-center my-4" v-if="loginerror">
+            <strong style="color: red">{{ loginerror }}</strong>
+          </div>
           <div class="col-12 my-4">
             <input
               type="submit"
@@ -30,6 +33,8 @@
               value="Login"
             />
           </div>
+         
+
           <div class="col-md-12 already_have_account">
             <nuxt-link :to="{ path: '/auth/register' }" exact
               >Don't have an account? Register</nuxt-link
@@ -44,28 +49,31 @@
 export default {
   data() {
     return {
+      loginerror: "",
       form: {
         email: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
-  middleware: [
-    'redirectIfAuthenticated'
-  ],
+  middleware: ["redirectIfAuthenticated"],
   methods: {
     async signin() {
-      await this.$auth.loginWith("laravelSanctum", {
-        data: this.form
-      });
-      if (this.$route.query.redirect) {
-        this.$router.replace(this.$route.query.redirect);
-        return;
+      try {
+        await this.$auth.loginWith("laravelSanctum", {
+          data: this.form,
+        });
+        if (this.$route.query.redirect) {
+          this.$router.replace(this.$route.query.redirect);
+          return;
+        }
+        this.$router.replace({
+          name: "index",
+        });
+      } catch (e) {
+        this.loginerror = e.response.data.errors.loginerror;
       }
-      this.$router.replace({
-        name: "index"
-      });
-    }
-  }
+    },
+  },
 };
 </script>
