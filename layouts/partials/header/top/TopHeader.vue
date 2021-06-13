@@ -8,11 +8,10 @@
       <div class="search col-md-6 col-sm-12">
         <SearchBar />
       </div>
-
       <div class="col-md-4 col-sm-12">
         <ul class="top_header_right">
           <li class="mx-2">
-            <nuxt-link :to="{path:'/auth/login'}" exact class="flex">
+            <a href="localhost:8000/" v-if="$auth.loggedIn">
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +26,26 @@
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
-              <span class="top_right_option"
+              <span class="top_right_option" 
+                >{{$auth.user.name}}
+              </span>
+            </a>
+             <nuxt-link :to="{path:'/auth/login'}" exact class="flex" v-else>
+              <svg
+                class="header_icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+              <span class="top_right_option" 
                 >Sign In
               </span>
             </nuxt-link>
