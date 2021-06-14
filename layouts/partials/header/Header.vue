@@ -4,9 +4,9 @@
         <div class="container-fluid">
           <TopHeader />
         </div>
-        <div class="container-fluid" >
+        <!-- <div class="container-fluid" >
             <hr>
-        </div>
+        </div> -->
           <div class="container-fluid low_head_back_img">
           <LowerHeader />
         </div>

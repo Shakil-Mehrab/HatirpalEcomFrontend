@@ -98,12 +98,12 @@
   border-radius: 4px;
   color: white;
 }
-.sub_category_a h5 {
+/* .sub_category_a h5 {
   width: 10%;
 }
 .sub_category_a svg {
   width: 100%;
-}
+} */
 .sub_category_a:hover {
   color: white;
 }

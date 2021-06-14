@@ -11,7 +11,7 @@
       <div class="col-md-4 col-sm-12">
         <ul class="top_header_right">
           <li class="mx-2">
-            <a href="localhost:8000/" v-if="$auth.loggedIn">
+            <a href="http://localhost:8000/admin/view/user" v-if="$auth.loggedIn">
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@
                 />
               </svg>
               <span class="top_right_option" 
-                >{{$auth.user.name}}
+                >{{$auth.user.data.name}}
               </span>
             </a>
              <nuxt-link :to="{path:'/auth/login'}" exact class="flex" v-else>

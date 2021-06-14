@@ -66,4 +66,7 @@
   .root_category_li:hover .sub_category {
     display: none;
   }
+  .top_header_right {
+    font-size: 10px;
+  }
 }

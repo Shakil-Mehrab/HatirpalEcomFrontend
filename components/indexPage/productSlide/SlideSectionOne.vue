@@ -62,7 +62,7 @@ export default {
   },
   props: {
     endpoints: {
-      required: false,
+      required: true,
       type: String,
       default: "product?per-page=20",
     },

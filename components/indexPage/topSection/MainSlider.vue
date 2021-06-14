@@ -1,5 +1,11 @@
 <template>
-  <div class="">
+  <div
+    v-observe-visibility="{
+      callback: showProductsNow,
+      once: true,
+    }"
+  >
+
     <client-only>
       <carousel
         class="home-slider"
@@ -9,10 +15,10 @@
         :loop="true"
         :navigationEnabled="true"
       >
-        <slide v-for="n in 5" :key="n.id">
+        <slide v-for="data in datas" :key="data.id">
           <div class="mx-1">
             <img
-              src="https://img.alicdn.com/imgextra/i1/O1CN01r7pL1J1DYSxOOPt7s_!!6000000000228-2-tps-990-400.png"
+              :src="data.thumbnail"
               width="100%"
               alt=""
             />
@@ -23,7 +29,37 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isLoading: true,
+      datas: [],
+    };
+  },
+  methods: {
+    async showProductsNow(visible) {
+      if (visible) {
+        await this.getProducts(this.endpoints);
+      }
+    },
+    async getProducts(endpoint) {
+      try {
+        this.isLoading = true;
+        let response = await this.$axios.$get('/slider');
+        this.datas = response.data;
+      } catch (e) {}
+      this.isLoading = false;
+    },
+    link(arg) {
+      return {
+        name: "product-slug",
+        params: {
+          slug: arg.slug,
+        },
+      };
+    },
+  },
+};
 </script>
 <style>
 .VueCarousel-navigation {

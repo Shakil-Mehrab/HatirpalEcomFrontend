@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6" v-for="child in category.children" :key="child.id">
         <nuxt-link to="" exact target="_blank" class="sub_category_a">
-          <h6>
+          <h6 class="text-center">
             {{ child.name }}
           </h6>
           <!-- <h5>

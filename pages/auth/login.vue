@@ -79,7 +79,7 @@ export default {
           return;
         }
          this.$router.replace({
-          path: "/auth/login",
+          path: "/",
         });
         // this.$router.replace({
         //   name: "index",
