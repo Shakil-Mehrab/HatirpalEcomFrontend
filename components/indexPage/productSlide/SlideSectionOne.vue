@@ -6,7 +6,7 @@
     }"
     class="col-md-12"
   >
-    <template>
+    <template v-if="!isLoading">
       <client-only>
         <carousel
           class="product-slider"
@@ -41,15 +41,14 @@
         </carousel>
       </client-only>
     </template>
-    <!-- <template class="text-center"> No Product Found </template> -->
-    <!-- <div class="flex" v-if="isLoading">
-      <div class="w-48 p-2" v-for="skull in skeleton" :key="skull">
+    <div class="row my-2" v-if="isLoading">
+      <div class="col-md-3" v-for="skull in skeleton" :key="skull">
         <content-placeholders>
           <content-placeholders-img />
           <content-placeholders-heading />
         </content-placeholders>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -79,7 +78,7 @@ export default {
     skeleton: {
       required: false,
       type: Number,
-      default: 1,
+      default: 4,
     },
   },
   methods: {

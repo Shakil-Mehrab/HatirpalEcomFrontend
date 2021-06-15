@@ -35,7 +35,8 @@ export default {
     "@/plugins/VueObserveVisibility",
     { src: "~/plugins/VueCarousel.js", mode: "client" },
     "@/plugins/VueZoomOnHover",
-    "@/plugins/VueLazyload"
+    "@/plugins/VueLazyload",
+    '@/plugins/VueContentPlaceholders',
   ],
 
   components: true,

@@ -31,7 +31,6 @@
         <SlideSectionOne
           endpoints="product?categories=food&per-page=20"
           :short_des="true"
-          :skeleton="6"
         />
       </div>
     </div>
@@ -43,7 +42,6 @@
           <SlideSectionOne
             endpoints="product?categories=food,fashion&per-page=20"
             :short_des="true"
-            :skeleton="6"
             :perpageInLarge="6"
           />
         </div>
