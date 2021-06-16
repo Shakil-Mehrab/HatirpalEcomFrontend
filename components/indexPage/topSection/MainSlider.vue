@@ -45,7 +45,7 @@ export default {
     async getProducts(endpoint) {
       try {
         this.isLoading = true;
-        let response = await this.$axios.$get('/slider');
+        let response = await this.$axios.$get('/api/slider');
         this.datas = response.data;
       } catch (e) {}
       this.isLoading = false;

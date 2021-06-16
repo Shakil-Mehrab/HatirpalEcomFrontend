@@ -29,7 +29,7 @@
       <div class="row bg-white">
         <CategoryHeading title="Electronics" />
         <SlideSectionOne
-          endpoints="product?categories=food&per-page=20"
+          endpoints="api/product?categories=food&per-page=20"
           :short_des="true"
         />
       </div>
@@ -40,7 +40,7 @@
         <CategoryHeadingLeft title="Fashion" />
         <div class="col-md-9">
           <SlideSectionOne
-            endpoints="product?categories=food,fashion&per-page=20"
+            endpoints="api/product?categories=food,fashion&per-page=20"
             :short_des="true"
             :perpageInLarge="6"
           />

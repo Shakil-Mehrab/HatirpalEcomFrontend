@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SlideSectionOne />
+    <!-- <SlideSectionOne /> -->
   </div>
 </template>
 <script>

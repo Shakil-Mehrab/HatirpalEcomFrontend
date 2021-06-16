@@ -19,6 +19,7 @@
           :loop="true"
           :navigationEnabled="true"
         >
+   
           <slide v-for="data in datas" :key="data.id">
             <div class="slide_content hover_shadow">
               <nuxt-link :to="link(data)" exact>

@@ -67,6 +67,15 @@ export default {
             url: "/api/auth/register"
           }
         }
+      },
+      laravelSanctumCart: {
+        provider: "laravel/sanctum",
+        url: "http://localhost:8000",
+        endpoints: {
+          login: {
+            url: "/api/cart"
+          }
+        }
       }
     }
   },

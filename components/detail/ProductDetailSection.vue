@@ -1,7 +1,9 @@
 <template>
   <div>
     <form action="#" @submit.prevent="add">
-      <input type="text" v-model="form.data">
+      <div>
+        {{ form }}
+      </div>
       <h3>{{ data.name }}</h3>
       <div style="color: orange">
         <i class="fas fa-star"></i>
@@ -23,27 +25,24 @@
           :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
         >
         <ul>
-          
-          <li
-            class="mx-2 mb-2"
-            v-for="size in data.sizes" :key="size.id">
-          
+          <li class="mx-2 mb-2" v-for="size in data.sizes" :key="size.id">
             <input
               type="radio"
               class="btn-check"
               :id="size.size"
-              :value="size.id" 
+              :value="size.id"
               v-model="form.size"
             />
             <label class="btn btn-outline-success" :for="size.size">
-              {{size.size}}
+              {{ size.size }}
             </label>
           </li>
         </ul>
       </div>
       <div class="mt-2 color" v-if="data.productImages.length">
         <strong class="pr-2 my-2"
-          >{{form}} Color :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
+          > Color
+          :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
         >
         <ul>
           <li
@@ -55,7 +54,7 @@
               type="radio"
               class="btn-check"
               :id="color.id"
-              :value="color.id" 
+              :value="color.id"
               v-model="form.image"
             />
             <label class="btn btn-outline-success" :for="color.id">
@@ -69,9 +68,20 @@
           </li>
         </ul>
       </div>
-      <div class="my-2 quantity" style="display:flex">
-        <input type="number" class="form-control" min="1" placeholder="Quantity" v-model="form.quantity" style="width:200px"/>&nbsp;
-        <input type="submit" class="btn btn-sm btn-success" value="Add to cart">
+      <div class="my-2 quantity" style="display: flex">
+        <input
+          type="number"
+          class="form-control"
+          min="1"
+          placeholder="Quantity"
+          v-model="form.quantity"
+          style="width: 200px"
+        />&nbsp;
+        <input
+          type="submit"
+          class="btn btn-sm btn-success"
+          value="Add to cart"
+        />
       </div>
       <hr />
       <div class="my-2">
@@ -93,19 +103,21 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertificketComment";
 
 export default {
-  data(){
-    return{
-      product:null,
-      form:{
-        data:this.data.slug,
-        size:'',
-        image:'',
+  data() {
+    return {
+      product: null,
+      form: {
+        product: this.data.id,
+        variation:this.data.variations[0],
+        size: "",
+        image: "",
         quantity: 1,
-      }
-    }
+      },
+    };
   },
   props: {
     data: {
@@ -117,23 +129,26 @@ export default {
     ProductBodyCertificketComment,
   },
   methods: {
-    // ...mapActions({
-    //   store:'cart/store'
-    // }),
-    add(){
-      console.log(this.form.quantity)
-      // this.store([{
-      //   id:this.form.variation.id,
-      //   quantity:this.form.quantity,
-      // }])
-      // this.form={
-      //   variation:'',
-      //   quantity:1
-      // }
-      // this.$router.replace({
-      //   name:'cart'
-      // });
-    }
+    ...mapActions({
+      store:'cart/cartStore'
+    }),
+    add() {
+      // console.log(this.form.variation.id);
+      this.store([{
+        product:this.form.product,
+        variation_id:this.form.variation.id,
+        size:this.form.size,
+        image:this.form.image,
+        quantity:this.form.quantity,
+      }])
+      this.form={
+        variation:'',
+        quantity:1
+      }
+    //   this.$router.replace({
+    //     name:'cart'
+    //   });
+    },
   },
 };
 </script>
