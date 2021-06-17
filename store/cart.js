@@ -53,11 +53,11 @@ export const mutations = {
 }
 export const actions={
   async getCart({ commit,state }){
-    let query = {}//75 no tutorial
+    let query = {}
     if(state.shipping){
       query.shipping_method_id = state.shipping.id
     }
-    let response= await this.$axios.$get(`cart?${queryString.stringify(query)}`)
+    let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
     //cart a query er madhome shipping method pathailo.jate oi valu cart totale add hoy
     commit('SET_PRODUCTS', response.data.products)
     // commit('SET_EMPTY', response.meta.empty)
@@ -76,25 +76,25 @@ export const actions={
 //     })
 //     dispatch('getCart')
 //   },
-  async store({ dispatch },products){
-    try{
-      let response= await this.$axios.$post('api/cart',{
-        products
-      })
-    }catch(e){
-
-    }
-    // dispatch('getCart')
-  },
-  async cartStore({ dispatch },products) {
+//   async store({ dispatch },products){
+//     try{
+//       let response= await this.$axios.$post('api/cart',{
+//         products
+//       })
+//     }catch(e){
+// 
+//     }
+//     dispatch('getCart')
+//   },
+  async store({ dispatch },rakib) {
     try {
       let response=await this.$auth.loginWith("laravelSanctumCart", {
-       data:products
+       data:rakib
       });
     } catch (e) {
-      console.log('error')
+      
     }
-     // dispatch('getCart')
+     dispatch('getCart')
   },
 //   async setShipping({ commit },shipping){
 //    commit('SET_SHIPPING',shipping)

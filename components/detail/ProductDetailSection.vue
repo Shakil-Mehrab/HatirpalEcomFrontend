@@ -83,6 +83,9 @@
           value="Add to cart"
         />
       </div>
+      <div>
+        <h6><a href="" style="color:red"><strong>{{loggedInfo}}</strong></a></h6>
+      </div>
       <hr />
       <div class="my-2">
         <h3 class="text-center">About this item</h3>
@@ -109,6 +112,7 @@ import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertif
 export default {
   data() {
     return {
+      loggedInfo:'',
       product: null,
       form: {
         product: this.data.id,
@@ -130,11 +134,12 @@ export default {
   },
   methods: {
     ...mapActions({
-      store:'cart/cartStore'
+      store:'cart/store'
     }),
     add() {
-      // console.log(this.form.variation.id);
-      this.store([{
+      // console.log('hi');
+      if(this.$auth.loggedIn){
+        this.store([{
         product:this.form.product,
         variation_id:this.form.variation.id,
         size:this.form.size,
@@ -145,9 +150,15 @@ export default {
         variation:'',
         quantity:1
       }
-    //   this.$router.replace({
-    //     name:'cart'
-    //   });
+      this.$router.replace({
+       name: "product-slug",
+        params: {
+          slug: this.data.slug,
+        },
+      });
+      }else{
+        this.loggedInfo="Please Signin"
+      }
     },
   },
 };
