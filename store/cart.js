@@ -1,7 +1,7 @@
 import queryString from 'query-string'
 
 export const state = () =>({
-  products:[],
+  productVariations:[],
   empty:true,
   subtotal:null,
   total:null,
@@ -9,11 +9,11 @@ export const state = () =>({
   shipping:null
 })
 export const getters = {
-  products(state) {
-    return state.products
+  productVariations(state) {
+    return state.productVariations
   },
   count(state){
-    return state.products.length
+    return state.productVariations.length
   },
   empty(state){
     return state.empty
@@ -32,8 +32,8 @@ export const getters = {
   },
 }
 export const mutations = {
-  SET_PRODUCTS (state, products){
-    state.products = products
+  SET_PRODUCT_VARIATIONS (state, productVariations){
+    state.productVariations = productVariations
   },
   SET_EMPTY (state, empty){
     state.empty = empty
@@ -59,36 +59,37 @@ export const actions={
     }
     let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
     //cart a query er madhome shipping method pathailo.jate oi valu cart totale add hoy
-    commit('SET_PRODUCTS', response.data.products)
-    // commit('SET_EMPTY', response.meta.empty)
-    // commit('SET_SUBTOTAL', response.meta.subtotal)
-    // commit('SET_TOTAL', response.meta.total)
-    // commit('SET_CHANGED', response.meta.changed)
+    commit('SET_PRODUCT_VARIATIONS', response.data.productVariations)
+    commit('SET_EMPTY', response.meta.empty)
+    commit('SET_SUBTOTAL', response.meta.subtotal)
+    commit('SET_TOTAL', response.meta.total)
+    commit('SET_CHANGED', response.meta.changed)
     return response
   },
 //   async destroy({ dispatch },productId){
 //     let response= await this.$axios.$delete(`cart/${productId}`)
 //     dispatch('getCart')
 //   },
-//   async update({ dispatch },{productId,quantity}){
-//     let response= await this.$axios.$patch(`cart/${productId}`,{
-//       quantity
-//     })
-//     dispatch('getCart')
-//   },
-//   async store({ dispatch },products){
-//     try{
-//       let response= await this.$axios.$post('api/cart',{
-//         products
-//       })
-//     }catch(e){
-// 
-//     }
-//     dispatch('getCart')
-//   },
+  async update({ dispatch },{productId,quantity}){
+    try {
+      // let response= await this.$axios.$patch(`cart/${productId}`,{
+      //   quantity
+      // })
+      console.log('good')
+      let response=await this.$auth.loginWith("laravelSanctumCartUpdate", {
+       data:rakib
+      });
+    } catch (e) {
+      console.log('hi')
+    }
+    dispatch('getCart')
+  },
   async store({ dispatch },rakib) {
     try {
-      let response=await this.$auth.loginWith("laravelSanctumCart", {
+      // let response= await this.$axios.$post('api/cart',{
+        //         products
+        //       })
+      let response=await this.$auth.loginWith("laravelSanctumCartStore", {
        data:rakib
       });
     } catch (e) {

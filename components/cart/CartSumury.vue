@@ -14,36 +14,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="text-center">
-                <i class="fas fa-times"></i>
-              </td>
-              <td class="text-center">
-                <img
-                  src="//s.alicdn.com/@sc01/kf/Ub76f81c973bd4d43bf47a67d0f098cb8v.jpg"
-                  alt=""
-                  width="50px"
-                />
-              </td>
-              <td class="text-center">
-                <h6>
-                  <a href="">This is about the product in detail</a>
-                </h6>
-              </td>
-
-              <td class="text-center">
-                <select >
-                  <option value="">Select One</option>
-                  <option value="">L</option>
-                  <option value="">XL</option>
-                  <option value="">M</option>
-                </select>
-              </td>
-              <td class="text-center">
-                <input type="number" value="2" />
-              </td>
-              <td class="text-center">500</td>
-            </tr>
+           <CartProductVariation 
+           v-for="productVariation in productVariations" 
+           :key="productVariation.id" 
+           :productVariation="productVariation"/>
           </tbody>
         </table>
       </div>
@@ -56,15 +30,15 @@
           <tbody>
             <tr>
               <td class="text-center">Sub Total</td>
-              <td class="text-center">4000</td>
+              <td class="text-center">{{subtotal}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td class="text-center">Tax</td>
               <td class="text-center">4000</td>
-            </tr>
+            </tr> -->
             <tr>
               <td class="text-center">Grand Total</td>
-              <td class="text-center">4000</td>
+              <td class="text-center">{{total}}</td>
             </tr>
           </tbody>
         </table>
@@ -72,3 +46,15 @@
     </div>
   </fragment>
 </template>
+<script>
+import {mapGetters} from 'vuex'
+export default({
+  computed:{
+    ...mapGetters({
+      productVariations:'cart/productVariations',
+      subtotal:'cart/subtotal',
+      total:'cart/total'
+    })
+  }
+})
+</script>

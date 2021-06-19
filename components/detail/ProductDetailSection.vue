@@ -31,7 +31,7 @@
               class="btn-check"
               :id="size.size"
               :value="size.id"
-              v-model="form.size"
+              v-model="form.size_id"
             />
             <label class="btn btn-outline-success" :for="size.size">
               {{ size.size }}
@@ -55,7 +55,7 @@
               class="btn-check"
               :id="color.id"
               :value="color.id"
-              v-model="form.image"
+              v-model="form.image_id"
             />
             <label class="btn btn-outline-success" :for="color.id">
               <img
@@ -117,8 +117,8 @@ export default {
       form: {
         product: this.data.id,
         variation:this.data.variations[0],
-        size: "",
-        image: "",
+        size_id: "",
+        image_id: "",
         quantity: 1,
       },
     };
@@ -142,8 +142,8 @@ export default {
         this.store([{
         product:this.form.product,
         variation_id:this.form.variation.id,
-        size:this.form.size,
-        image:this.form.image,
+        size_id:this.form.image_id,
+        image_id:this.form.image_id,
         quantity:this.form.quantity,
       }])
       this.form={

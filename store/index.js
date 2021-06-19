@@ -28,7 +28,7 @@ export const actions = {
 
         commit('SET_SELECTEDCATEGORIES', selectedCategoryResponse.data)
         commit('SET_TREE_CATEGORIES', treeCategoryResponse.data)
-        return selectedCategoryResponse
+        // return selectedCategoryResponse
         if(this.$auth.loggedIn){
             await dispatch('cart/getCart')
           }

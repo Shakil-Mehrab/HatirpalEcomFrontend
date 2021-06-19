@@ -1,7 +1,7 @@
 <template>
     <div class="row top_header">
       <div class="col-md-2 col-sm-12 logo">
-        <nuxt-link :to="{path:'/'}" exact>
+        <nuxt-link :to="{name:'index'}">
           <img src="~/assets/images/logo.PNG" width="100%" alt="Logo"/>
         </nuxt-link>
       </div>
@@ -27,10 +27,11 @@
                 />
               </svg>
               <span class="top_right_option" 
-                >{{$auth.user.data.name}}
+                >
+                {{$auth.user.data.name}}
               </span>
             </a>
-             <nuxt-link :to="{path:'/auth/login'}" exact class="flex" v-else>
+             <nuxt-link :to="{name:'auth-signin'}" class="flex" v-else>
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +90,7 @@
             </a>
           </li>
           <li class="mx-2">
-            <a href="cart/cart" exact>
+            <nuxt-link :to="{name:'cart'}">
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,8 +102,8 @@
                 />
               </svg>
               <span class="top_right_option">Cart</span>
-              <span class="top_right_option">(0)</span>
-            </a>
+              <span class="top_right_option">({{cartCount}})</span>
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -110,9 +111,15 @@
 </template>
 <script>
 import SearchBar from "@/layouts/partials/header/top/SearchBar";
+import {mapGetters} from 'vuex';
 export default {
   components: {
     SearchBar
   },
+  computed:{
+    ...mapGetters({
+            cartCount: 'cart/count'
+    })
+  }
 };
 </script>
