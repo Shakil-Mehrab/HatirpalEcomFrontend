@@ -2,7 +2,6 @@
   <div>
     <form action="#" @submit.prevent="add">
       <div>
-        {{ form }}
       </div>
       <h3>{{ data.name }}</h3>
       <div style="color: orange">
@@ -19,7 +18,8 @@
         </strong>
         {{ data.price }} BDT
       </div>
-      <div class="mt-2 size" v-if="data.sizes.length">
+      <div class="mt-2">
+        <div class="size" v-if="data.sizes.length">
         <strong class="pr-2 my-2"
           >Size
           :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
@@ -39,7 +39,15 @@
           </li>
         </ul>
       </div>
-      <div class="mt-2 color" v-if="data.productImages.length">
+      <div>
+        <span class="help-block" v-if="requiredErrors">
+              <strong style="color: red">{{requiredErrors['products.0.size_id']}}</strong>
+          </span>
+      </div>
+      </div>
+      <div class="mt-2" >
+
+      <div class="color" v-if="data.productImages.length">
         <strong class="pr-2 my-2"
           > Color
           :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
@@ -68,6 +76,13 @@
           </li>
         </ul>
       </div>
+      <div>
+        <span class="help-block" v-if="requiredErrors">
+              <strong style="color: red">{{ requiredErrors['products.0.image_id'] }}</strong>
+          </span>
+      </div>
+      </div>
+
       <div class="my-2 quantity" style="display: flex">
         <input
           type="number"
@@ -112,10 +127,10 @@ import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertif
 export default {
   data() {
     return {
+      requiredErrors:'',
       loggedInfo:'',
       product: null,
       form: {
-        product: this.data.id,
         variation:this.data.variations[0],
         size_id: "",
         image_id: "",
@@ -137,25 +152,29 @@ export default {
       store:'cart/store'
     }),
     add() {
-      // console.log('hi');
       if(this.$auth.loggedIn){
-        this.store([{
-        product:this.form.product,
+          this.store([{
         variation_id:this.form.variation.id,
-        size_id:this.form.image_id,
+        size_id:this.form.size_id,
         image_id:this.form.image_id,
         quantity:this.form.quantity,
       }])
-      this.form={
-        variation:'',
-        quantity:1
-      }
-      this.$router.replace({
-       name: "product-slug",
-        params: {
-          slug: this.data.slug,
-        },
-      });
+      .then(
+        response=>console.log(response),
+        this.requiredErrors="",
+      )
+      .catch(error=>this.requiredErrors=error.response.data.errors)
+      // this.form={
+      //   variation:'',
+      //   quantity:1
+      // }
+      // this.$router.replace({
+      //  name: "product-slug",
+      //   params: {
+      //     slug: this.data.slug,
+      //   },
+      // });
+       
       }else{
         this.loggedInfo="Please Signin"
       }

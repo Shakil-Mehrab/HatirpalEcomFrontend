@@ -30,7 +30,7 @@ export const actions = {
         commit('SET_TREE_CATEGORIES', treeCategoryResponse.data)
         // return selectedCategoryResponse
         if(this.$auth.loggedIn){
-            await dispatch('cart/getCart')
+        await dispatch('cart/getCart')
           }
     }
 }

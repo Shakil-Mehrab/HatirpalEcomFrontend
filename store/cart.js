@@ -32,7 +32,7 @@ export const getters = {
   },
 }
 export const mutations = {
-  SET_PRODUCT_VARIATIONS (state, productVariations){
+  SET_PRODUCTS_VARIATIONS (state, productVariations){
     state.productVariations = productVariations
   },
   SET_EMPTY (state, empty){
@@ -59,42 +59,28 @@ export const actions={
     }
     let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
     //cart a query er madhome shipping method pathailo.jate oi valu cart totale add hoy
-    commit('SET_PRODUCT_VARIATIONS', response.data.productVariations)
+    commit('SET_PRODUCTS_VARIATIONS', response.data.productVariations)
     commit('SET_EMPTY', response.meta.empty)
     commit('SET_SUBTOTAL', response.meta.subtotal)
     commit('SET_TOTAL', response.meta.total)
     commit('SET_CHANGED', response.meta.changed)
     return response
   },
-//   async destroy({ dispatch },productId){
-//     let response= await this.$axios.$delete(`cart/${productId}`)
-//     dispatch('getCart')
-//   },
-  async update({ dispatch },{productId,quantity}){
-    try {
-      // let response= await this.$axios.$patch(`cart/${productId}`,{
-      //   quantity
-      // })
-      console.log('good')
-      let response=await this.$auth.loginWith("laravelSanctumCartUpdate", {
-       data:rakib
-      });
-    } catch (e) {
-      console.log('hi')
-    }
+  // async destroy({ dispatch },productVariationId){
+  //   let response= await this.$axios.$delete(`cart/${productVariationId}`)
+  //   dispatch('getCart')
+  // },
+  async update({ dispatch },{productVariationId,quantity}){
+    await this.$axios.$patch(`api/cart/${productVariationId}`,{
+      quantity
+    });
     dispatch('getCart')
   },
-  async store({ dispatch },rakib) {
-    try {
-      // let response= await this.$axios.$post('api/cart',{
-        //         products
-        //       })
-      let response=await this.$auth.loginWith("laravelSanctumCartStore", {
-       data:rakib
-      });
-    } catch (e) {
-      
-    }
+
+  async store({ dispatch },products) {
+      let response= await this.$axios.$post('api/cart',{
+        products
+      })
      dispatch('getCart')
   },
 //   async setShipping({ commit },shipping){

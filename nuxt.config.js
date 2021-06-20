@@ -68,29 +68,30 @@ export default {
           }
         }
       },
-      laravelSanctumCartStore: {
-        provider: "laravel/sanctum",
-        url: "http://localhost:8000",
-        endpoints: {
-          login: {
-            url: "/api/cart"
-          }
-        }
-      },
-      laravelSanctumCartStore: {
-        provider: "laravel/sanctum",
-        url: "http://localhost:8000",
-        endpoints: {
-          login: {
-            url: "/api/cart"
-          }
-        }
-      }
+      // laravelSanctumCartStore: {
+      //   provider: "laravel/sanctum",
+      //   url: "http://localhost:8000",
+      //   endpoints: {
+      //     login: {
+      //       url: "/api/cart"
+      //     }
+      //   }
+      // },
+      // laravelSanctumCartStore: {
+      //   provider: "laravel/sanctum",
+      //   url: "http://localhost:8000",
+      //   endpoints: {
+      //     login: {
+      //       url: "/api/cart"
+      //     }
+      //   }
+      // }
     }
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: env.API_URL
+    baseURL: "http://localhost:8000",
+    credentials:true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

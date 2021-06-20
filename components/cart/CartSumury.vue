@@ -32,10 +32,10 @@
               <td class="text-center">Sub Total</td>
               <td class="text-center">{{subtotal}}</td>
             </tr>
-            <!-- <tr>
+            <tr>
               <td class="text-center">Tax</td>
               <td class="text-center">4000</td>
-            </tr> -->
+            </tr>
             <tr>
               <td class="text-center">Grand Total</td>
               <td class="text-center">{{total}}</td>

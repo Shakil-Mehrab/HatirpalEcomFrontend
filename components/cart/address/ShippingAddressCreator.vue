@@ -91,10 +91,10 @@ export default {
     // CountryDropdown
   },
   methods: {
-    async store() {
-      let response = await this.$axios.$post("addresses", this.form);
-      this.$emit("created", response.data);
-    },
+    // async store() {
+    //   let response = await this.$axios.$post("addresses", this.form);
+    //   this.$emit("created", response.data);
+    // },
   },
 };
 </script>
