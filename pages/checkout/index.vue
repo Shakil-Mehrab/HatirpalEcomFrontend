@@ -6,7 +6,10 @@
       <div class="col-md-9">
         <article class="bg-white">
           <h6><strong>Ship to</strong></h6>
-          <ShippingAddress />
+          <ShippingAddress 
+          :addresses="addresses"
+            v-model="form.address_id"
+          />
         </article>
         <hr />
         <article class="bg-white">
@@ -24,7 +27,7 @@
             </select>
           </div>
         </article>
-        <article>
+        <article v-if="productVariations.length">
           <h6><strong>Cart Sumury</strong></h6>
           <CartSumury />
         </article>
@@ -50,6 +53,7 @@
   </div>
 </template>
 <script>
+import {mapGetters,mapActions} from 'vuex'
 import Progressbar from "@/components/cart/Progressbar";
 import ShippingAddress from "@/components/cart/Address/ShippingAddress";
 import CartSumury from "@/components/cart/CartSumury";
@@ -68,6 +72,10 @@ export default {
       },
     };
   },
+  middleware:[
+    'redirectIfGuest'
+  ],
+
   watch: {
     // "form.address_id"(addressId) {
     //   this.getShippingMethodsForAddress(addressId).then(() => {
@@ -85,23 +93,28 @@ export default {
     PaymentMethod
   },
   computed: {
-    shippingMethodId: {
-      // get() {
-      //   return this.shipping ? this.shipping.id : ""; //mapGetters theke
-      // },
-      // set(shippingMethodId) {
-      //   this.setShipping(
-      //     this.shippingMethods.find(s => s.id === shippingMethodId)
-      //   );
-      // }
-    },
+    ...mapGetters({
+      total:'cart/total',
+      productVariations:'cart/productVariations',
+      empty:'cart/empty',
+      shipping:'cart/shipping'
+    }),
+    shippingMethodId:{ //eta first call hobe.call hobe + shippingMethodId=shipping.id o dhore rakhbe.cz eta v-model+method
+      get(){
+        // return this.shipping? this.shipping.id : ''
+      },
+      set(shippingMethodId){
+        // this.setShipping(this.shippingMethods.find(s=>s.id===shippingMethodId))
+        //eta na deya porjonto upore get(){ return this.shipping=null}/eta mapActions a setShipping call korche
+      }
+    }
   },
   methods: {
-    // ...mapActions({
-    //   setShipping: "cart/setShipping",
-    //   getCart: "cart/getCart",
-    //   flash: "alert/flash"
-    // }),
+    ...mapActions({
+      setShipping: "cart/setShipping",
+      getCart: "cart/getCart",
+      // flash: "alert/flash"
+    }),
     // async order() {
     //   this.submitting = true;
     //   console.log(this.form.payment_method_id);
@@ -127,15 +140,15 @@ export default {
     //   return response;
     // }
   },
-  // async asyncData({ app }) {
-  //   let address = await app.$axios.$get("addresses");
-  //   let paymentMethods = await app.$axios.$get("payment-methods");
+  async asyncData({ app }) {
+    let address = await app.$axios.$get("api/address");
+    // let paymentMethods = await app.$axios.$get("payment-methods");
 
-  //   return {
-  //     addresses: address.data,
-  //     paymentMethods: paymentMethods.data
-  //   };
-  // }
+    return {
+      addresses: address.data,
+      // paymentMethods: paymentMethods.data
+    };
+  }
 };
 </script>
 

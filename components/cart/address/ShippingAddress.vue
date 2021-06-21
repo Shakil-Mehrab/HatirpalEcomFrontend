@@ -1,24 +1,31 @@
 <template>
   <div class="shipping_address">
     <div v-if="selecting">
-      <ShippingAddressSelector @click="addressSelected" />
+      <ShippingAddressSelector
+        :addresses="addresses"
+        :selectedAddress="selectedAddress"
+        @click="addressSelected"
+        v-if="addresses.length"
+      />
     </div>
     <div v-else-if="creating">
       <ShippingAddressCreator @cancel="creating = false" @created="created" />
     </div>
     <div v-else>
-      <p>
-        Nayakandi<br />
-        Nayakandi ,Jalirpur<br />
-        Gopalgonj<br />
-        7791<br />
-        Banglasesh
-      </p>
-      <div>
+      <ul v-if="selectedAddress">
+        <li>{{ selectedAddress.country }}</li>
+        <li>{{ selectedAddress.division }}</li>
+        <li>{{ selectedAddress.district }}</li>
+        <li>{{ selectedAddress.place }}</li>
+        <li>{{ selectedAddress.address }}</li>
+      </ul>
+      <div class="my-2">
         <a href="" class="brand_button" @click.prevent="selecting = true">
           Change Shipping Address</a
         >
-        <a href="" class="brand_button" @click.prevent="creating = true">Add an Address</a>
+        <a href="" class="brand_button" @click.prevent="creating = true"
+          >Add an Address</a
+        >
       </div>
     </div>
   </div>
@@ -30,19 +37,56 @@ export default {
   data() {
     return {
       selecting: false,
-      creating: false,
+      creating: true,
       localAddresses: this.addresses,
       selectedAddress: null,
     };
   },
-  watch: {
-    selectedAddress(address) {
-      this.$emit("input", address.id);
-    },
-  },
+
+  // watch: {
+  //   selectedAddress(address) {
+  //     this.$emit("input", address.id);
+  //   },
+  // },
   components: {
     ShippingAddressSelector,
     ShippingAddressCreator,
+  },
+  props: {
+    addresses: {
+      required: true,
+      type: Array,
+    },
+  },
+  computed: {
+    defaultAddress() {
+      // return this.localAddresses.find((address)=>{
+      //   return address.default ===true;
+      // })
+      if(this.localAddresses.find((a) => a.default === 1)){
+        return this.localAddresses.find((a) => a.default === 1);
+      }
+      return this.addresses[0]
+    },
+  },
+  methods: {
+    addressSelected(address) {
+      this.switchAddress(address);
+      this.selecting = false;
+    },
+    switchAddress(address) {
+      this.selectedAddress = address;
+    },
+    // created(address){//ShippingAddressCreator theke response.data meand address niye asche
+    //   this.localAddresses.push(address)
+    //   this.creating = false
+    //   this.switchAddress(address)
+    // }
+  },
+  created() {
+    if (this.addresses.length) {
+      this.switchAddress(this.defaultAddress);
+    }
   },
 };
 </script>

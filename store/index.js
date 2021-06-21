@@ -22,15 +22,14 @@ export const mutations = {
 }
 // Actions
 export const actions = {
-    async nuxtServerInit({ commit,dispatch }, { app }) {
+    async nuxtServerInit({ commit, dispatch }, { app }) {
         let selectedCategoryResponse = await app.$axios.$get('api/category?selects=food')
         let treeCategoryResponse = await app.$axios.$get('api/category')
-
         commit('SET_SELECTEDCATEGORIES', selectedCategoryResponse.data)
         commit('SET_TREE_CATEGORIES', treeCategoryResponse.data)
         // return selectedCategoryResponse
-        if(this.$auth.loggedIn){
-        await dispatch('cart/getCart')
-          }
+        if (this.$auth.loggedIn) {
+            await dispatch('cart/getCart')
+        }
     }
 }

@@ -1,13 +1,16 @@
 <template>
   <div>
-    <h6><strong>Select Shipping Address</strong></h6>
-    <div class="my-2 all_address" v-for="n in 10" :key="n">
+    <!-- <h6><strong>Select Shipping Address</strong></h6> -->
+    <!-- :class="{'selected_address' : address.id===selectedAddress.id}" -->
+    <div class="my-2 all_address" v-for="address in addresses" :key="address.id">
       <div class="mb-2">
-        Nayakandi<br />
-        Nayakandi ,Jalirpur Nayakandi ,Jalirpur<br />
-        Gopalgonj<br />
-        7791<br />
-        Banglasesh
+        <ul :class="{'selected_address' : address.id===selectedAddress.id}">
+          <li>{{address.country}}</li>
+          <li>{{address.division}}</li>
+          <li>{{address.district}}</li>
+          <li>{{address.place}}</li>
+          <li>{{address.address}}</li>
+        </ul>
       </div>
       <div class="selector">
         <a
@@ -22,5 +25,17 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props:{
+    addresses:{
+      required:true,
+      type:Array
+    },
+    selectedAddress:{
+      required:true,
+      type:Object,
+    }
+  }
+}
 </script>
+

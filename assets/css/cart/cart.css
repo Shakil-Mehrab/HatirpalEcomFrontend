@@ -37,3 +37,6 @@
   display: flex;
   align-items: center;
 }
+.selected_address li{
+  color: violet;
+}

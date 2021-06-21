@@ -66,13 +66,13 @@ export const actions={
     commit('SET_CHANGED', response.meta.changed)
     return response
   },
-  // async destroy({ dispatch },productVariationId){
-  //   let response= await this.$axios.$delete(`cart/${productVariationId}`)
-  //   dispatch('getCart')
-  // },
-  async update({ dispatch },{productVariationId,quantity}){
+  async destroy({ dispatch },productVariationId){
+    let response= await this.$axios.$delete(`api/cart/${productVariationId}`)
+    dispatch('getCart')
+  },
+  async update({ dispatch },{productVariationId,size_id,quantity}){
     await this.$axios.$patch(`api/cart/${productVariationId}`,{
-      quantity
+      quantity,size_id
     });
     dispatch('getCart')
   },
@@ -83,7 +83,7 @@ export const actions={
       })
      dispatch('getCart')
   },
-//   async setShipping({ commit },shipping){
-//    commit('SET_SHIPPING',shipping)
-//   }
+  // async setShipping({ commit },shipping){
+  //  commit('SET_SHIPPING',shipping)
+  // }
 }
