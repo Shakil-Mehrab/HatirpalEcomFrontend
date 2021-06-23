@@ -1,9 +1,9 @@
 <template>
   <div>
     <form action="#" @submit.prevent="add">
-      <div>
-      </div>
+      <div></div>
       <h3>{{ data.name }}</h3>
+      {{ data }}
       <div style="color: orange">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -20,67 +20,69 @@
       </div>
       <div class="mt-2">
         <div class="size" v-if="data.sizes.length">
-        <strong class="pr-2 my-2"
-          >Size
-          :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
-        >
-        <ul>
-          <li class="mx-2 mb-2" v-for="size in data.sizes" :key="size.id">
-            <input
-              type="radio"
-              class="btn-check"
-              :id="size.size"
-              :value="size.id"
-              v-model="form.size_id"
-            />
-            <label class="btn btn-outline-success" :for="size.size">
-              {{ size.size }}
-            </label>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <span class="help-block" v-if="requiredErrors">
-              <strong style="color: red">{{requiredErrors['products.0.size_id']}}</strong>
-          </span>
-      </div>
-      </div>
-      <div class="mt-2" >
-
-      <div class="color" v-if="data.productImages.length">
-        <strong class="pr-2 my-2"
-          > Color
-          :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
-        >
-        <ul>
-          <li
-            class="mx-2 mb-2"
-            v-for="color in data.productImages"
-            :key="color.id"
+          <strong class="pr-2 my-2"
+            >Size
+            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
           >
-            <input
-              type="radio"
-              class="btn-check"
-              :id="color.id"
-              :value="color.id"
-              v-model="form.image_id"
-            />
-            <label class="btn btn-outline-success" :for="color.id">
-              <img
-                v-if="color.thumbnail"
-                v-lazy="color.thumbnail"
-                :alt="color.slug"
-                width="100%"
+          <ul>
+            <li class="mx-2 mb-2" v-for="size in data.sizes" :key="size.id">
+              <input
+                type="radio"
+                class="btn-check"
+                :id="size.size"
+                :value="size.id"
+                v-model="form.size_id"
               />
-            </label>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <span class="help-block" v-if="requiredErrors">
-              <strong style="color: red">{{ requiredErrors['products.0.image_id'] }}</strong>
+              <label class="btn btn-outline-success" :for="size.size">
+                {{ size.size }}
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <span class="help-block" v-if="requiredErrors">
+            <strong style="color: red">{{
+              requiredErrors["products.0.size_id"]
+            }}</strong>
           </span>
+        </div>
       </div>
+      <div class="mt-2">
+        <div class="color" v-if="data.productImages.length">
+          <strong class="pr-2 my-2">
+            Color :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
+          >
+          <ul>
+            <li
+              class="mx-2 mb-2"
+              v-for="color in data.productImages"
+              :key="color.id"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                :id="color.id"
+                :value="color.id"
+                v-model="form.image_id"
+              />
+              <label class="btn btn-outline-success" :for="color.id">
+                <img
+                  v-if="color.thumbnail"
+                  v-lazy="color.thumbnail"
+                  :alt="color.slug"
+                  width="100%"
+                />
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <span class="help-block" v-if="requiredErrors">
+            <strong style="color: red">{{
+              requiredErrors["products.0.image_id"]
+            }}</strong>
+          </span>
+        </div>
       </div>
 
       <div class="my-2 quantity" style="display: flex">
@@ -99,7 +101,11 @@
         />
       </div>
       <div>
-        <h6><a href="" style="color:red"><strong>{{loggedInfo}}</strong></a></h6>
+        <h6>
+          <a href="" style="color: red"
+            ><strong>{{ loggedInfo }}</strong></a
+          >
+        </h6>
       </div>
       <hr />
       <div class="my-2">
@@ -121,17 +127,17 @@
   </div>
 </template>
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
 import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertificketComment";
 
 export default {
   data() {
     return {
-      requiredErrors:'',
-      loggedInfo:'',
+      requiredErrors: "",
+      loggedInfo: "",
       product: null,
       form: {
-        variation:this.data.variations[0],
+        product_id: this.data.id,
         size_id: "",
         image_id: "",
         quantity: 1,
@@ -152,31 +158,31 @@ export default {
       store:'cart/store'
     }),
     add() {
-      if(this.$auth.loggedIn){
-          this.store([{
-        variation_id:this.form.variation.id,
-        size_id:this.form.size_id,
-        image_id:this.form.image_id,
-        quantity:this.form.quantity,
-      }])
-      .then(
-        response=>console.log(response),
-        this.requiredErrors="",
-      )
-      .catch(error=>this.requiredErrors=error.response.data.errors)
-      // this.form={
-      //   variation:'',
-      //   quantity:1
-      // }
-      // this.$router.replace({
-      //  name: "product-slug",
-      //   params: {
-      //     slug: this.data.slug,
-      //   },
-      // });
-       
-      }else{
-        this.loggedInfo="Please Signin"
+      console.log(this.form)
+      if (this.$auth.loggedIn) {
+        this.store([
+          {
+            product_id: this.form.product_id,
+            size_id: this.form.size_id,
+            image_id: this.form.image_id,
+            quantity: this.form.quantity,
+          },
+        ])
+          .then((response) => console.log(response), (this.requiredErrors = ""))
+          .catch((error) => (this.requiredErrors = error.response.data.errors));
+
+        // this.form={
+        //   variation:'',
+        //   quantity:1
+        // }
+        // this.$router.replace({
+        //  name: "product-slug",
+        //   params: {
+        //     slug: this.data.slug,
+        //   },
+        // });
+      } else {
+        this.loggedInfo = "Please Signin";
       }
     },
   },

@@ -27,7 +27,7 @@
             </select>
           </div>
         </article>
-        <article v-if="productVariations.length">
+        <article v-if="products.length">
           <h6><strong>Cart Sumury</strong></h6>
           <CartSumury />
         </article>
@@ -95,7 +95,7 @@ export default {
   computed: {
     ...mapGetters({
       total:'cart/total',
-      productVariations:'cart/productVariations',
+      products:'cart/products',
       empty:'cart/empty',
       shipping:'cart/shipping'
     }),

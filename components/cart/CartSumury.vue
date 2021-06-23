@@ -1,6 +1,7 @@
 <template>
   <fragment>
     <div class="col-md-12">
+      {{products}}
       <div class="overflow-scroll cart">
         <table class="table table-bordered">
           <thead>
@@ -15,9 +16,9 @@
           </thead>
           <tbody>
            <CartProductVariation 
-           v-for="productVariation in productVariations" 
-           :key="productVariation.id" 
-           :productVariation="productVariation"/> 
+           v-for="product in products" 
+           :key="product.id" 
+           :product="product"/> 
                 <!-- <slot name="rows" /> -->
           </tbody>
         </table>
@@ -52,7 +53,7 @@ import {mapGetters} from 'vuex'
 export default({
   computed:{
     ...mapGetters({
-      productVariations:'cart/productVariations',
+      products:'cart/products',
       subtotal:'cart/subtotal',
       total:'cart/total'
     })

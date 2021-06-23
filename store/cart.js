@@ -1,7 +1,7 @@
 import queryString from 'query-string'
 
 export const state = () =>({
-  productVariations:[],
+  products:[],
   empty:true,
   subtotal:null,
   total:null,
@@ -9,11 +9,11 @@ export const state = () =>({
   shipping:null
 })
 export const getters = {
-  productVariations(state) {
-    return state.productVariations
+  products(state) {
+    return state.products
   },
   count(state){
-    return state.productVariations.length
+    return state.products.length
   },
   empty(state){
     return state.empty
@@ -32,8 +32,8 @@ export const getters = {
   },
 }
 export const mutations = {
-  SET_PRODUCTS_VARIATIONS (state, productVariations){
-    state.productVariations = productVariations
+  SET_PRODUCTS (state, products){
+    state.products = products
   },
   SET_EMPTY (state, empty){
     state.empty = empty
@@ -59,19 +59,19 @@ export const actions={
     }
     let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
     //cart a query er madhome shipping method pathailo.jate oi valu cart totale add hoy
-    commit('SET_PRODUCTS_VARIATIONS', response.data.productVariations)
+    commit('SET_PRODUCTS', response.data.products)
     commit('SET_EMPTY', response.meta.empty)
     commit('SET_SUBTOTAL', response.meta.subtotal)
     commit('SET_TOTAL', response.meta.total)
     commit('SET_CHANGED', response.meta.changed)
     return response
   },
-  async destroy({ dispatch },productVariationId){
-    let response= await this.$axios.$delete(`api/cart/${productVariationId}`)
+  async destroy({ dispatch },productId){
+    let response= await this.$axios.$delete(`api/cart/${productId}`);
     dispatch('getCart')
   },
-  async update({ dispatch },{productVariationId,size_id,quantity}){
-    await this.$axios.$patch(`api/cart/${productVariationId}`,{
+  async update({ dispatch },{productId,size_id,quantity}){
+    await this.$axios.$patch(`api/cart/${productId}`,{
       quantity,size_id
     });
     dispatch('getCart')
@@ -81,7 +81,7 @@ export const actions={
       let response= await this.$axios.$post('api/cart',{
         products
       })
-     dispatch('getCart')
+    //  dispatch('getCart')
   },
   // async setShipping({ commit },shipping){
   //  commit('SET_SHIPPING',shipping)

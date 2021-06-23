@@ -3,7 +3,7 @@
     <div class="row bg-white">
       <h6 class="mt-2"><strong>Cart</strong></h6>
       <Progressbar nameOfPage="cart" />
-      <CartSumury v-if="productVariations.length" />
+      <CartSumury v-if="products.length" />
       <div class="col-md-12" v-else>
         <p>Your Cart is Empty</p>
       </div>
@@ -33,7 +33,7 @@ export default {
   computed: {
     ...mapGetters({
       empty: "cart/empty",
-      productVariations: "cart/productVariations",
+      products: "cart/products",
     }),
   },
 };
