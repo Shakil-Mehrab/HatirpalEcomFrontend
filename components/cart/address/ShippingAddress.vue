@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       selecting: false,
-      creating: true,
+      creating: false,
       localAddresses: this.addresses,
       selectedAddress: null,
     };
@@ -77,11 +77,11 @@ export default {
     switchAddress(address) {
       this.selectedAddress = address;
     },
-    // created(address){//ShippingAddressCreator theke response.data meand address niye asche
-    //   this.localAddresses.push(address)
-    //   this.creating = false
-    //   this.switchAddress(address)
-    // }
+    created(address){//ShippingAddressCreator theke response.data meand address niye asche
+      this.localAddresses.push(address)
+      this.creating = false
+      this.switchAddress(address)
+    }
   },
   created() {
     if (this.addresses.length) {
