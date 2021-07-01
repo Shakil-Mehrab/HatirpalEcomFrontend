@@ -3,6 +3,7 @@
     <form action="#" @submit.prevent="add">
       <div></div>
       <h3>{{ data.name }}</h3>
+      <div style="color:red">{{requiredErrors}}</div>
       {{ data }}
       <div style="color: orange">
         <i class="fas fa-star"></i>
@@ -89,7 +90,7 @@
         <input
           type="number"
           class="form-control"
-          min="1"
+          min="12"
           placeholder="Quantity"
           v-model="form.quantity"
           style="width: 200px"
@@ -140,7 +141,7 @@ export default {
         product_id: this.data.id,
         size_id: "",
         image_id: "",
-        quantity: 1,
+        quantity: 12,
       },
     };
   },
