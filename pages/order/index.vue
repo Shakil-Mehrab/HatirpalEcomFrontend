@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="row bg-white my-3">
+       <h6 class="mt-2"><strong>Order</strong></h6>
       <div class="col-md-12">
         <table class="table table-hover" v-if="orders.length">
           <thead>
@@ -16,8 +17,8 @@
             <OrderSumury v-for="order in orders" :key="order.id" :order="order"/>
           </tbody>
         </table>
-        <div class="text-center" v-else>
-            No Order
+        <div class="text-center mb-4" v-else>
+            <h6>No Order</h6>
         </div>
       </div>
     </div>

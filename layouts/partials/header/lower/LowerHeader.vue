@@ -38,7 +38,8 @@
       <div
         class="root_category"
           >
-        <RootCategory :categories="treeCategories"/>
+        <RootCategory :categories="treeCategories" v-if="treeCategories.length"/>
+        <div v-else><h6>No Category</h6></div>
       </div>
     </div>
     <div class="col-md-10 col-sm-6 col-6 mobile_menu_pre_div">

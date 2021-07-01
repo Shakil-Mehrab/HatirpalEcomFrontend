@@ -2,10 +2,10 @@
   <div class="container mx-auto">
     <div class="row bg-white">
       <h6 class="mt-2"><strong>Cart</strong></h6>
-      <Progressbar nameOfPage="cart" />
+      <Progressbar nameOfPage="cart" v-if="products.length"/>
       <CartSumury v-if="products.length" />
-      <div class="col-md-12" v-else>
-        <p>Your Cart is Empty</p>
+      <div class="text-center my-4" v-else>
+        <h6>Your Cart is Empty</h6>
       </div>
       <div class="mb-4 shopping_checkout">
         <nuxt-link :to="{ name: 'index' }" v-if="!empty" class="brand_button"

@@ -14,7 +14,7 @@
         >
           <a href="" class="">
               <h6>Ladies health monitoring smartwatch</h6>
-              <div style="display:flex">
+              <div class="src_btn_flex">
                 <span class="brand_round_button brand_shadow">Source Now</span
               >
               <img

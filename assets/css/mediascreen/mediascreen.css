@@ -49,6 +49,12 @@
   .sub_category {
     width: 90%;
   }
+  .trending ul li:nth-child(1) {
+    border-bottom: unset;
+  }
+  .logo a {
+    margin: 0 auto;
+  }
 }
 @media only screen and (max-width: 576px) {
   .trending .mymarket_ul {

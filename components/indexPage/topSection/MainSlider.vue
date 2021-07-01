@@ -1,11 +1,6 @@
 <template>
-  <div
-    v-observe-visibility="{
-      callback: showProductsNow,
-      once: true,
-    }"
-  >
-
+  <div>
+    <img src="images/default/slide.jpeg" width="100%" alt="" v-if="isLoading" />
     <client-only>
       <carousel
         class="home-slider"
@@ -17,11 +12,7 @@
       >
         <slide v-for="data in datas" :key="data.id">
           <div class="mx-1">
-            <img
-              :src="data.thumbnail"
-              width="100%"
-              alt=""
-            />
+            <img :src="data.thumbnail" width="100%" alt="" />
           </div>
         </slide>
       </carousel>
@@ -37,15 +28,10 @@ export default {
     };
   },
   methods: {
-    async showProductsNow(visible) {
-      if (visible) {
-        await this.getProducts(this.endpoints);
-      }
-    },
-    async getProducts(endpoint) {
+    async getSlides(endpoint) {
       try {
         this.isLoading = true;
-        let response = await this.$axios.$get('/api/slider');
+        let response = await this.$axios.$get("/api/slider");
         this.datas = response.data;
       } catch (e) {}
       this.isLoading = false;
@@ -58,6 +44,9 @@ export default {
         },
       };
     },
+  },
+  created() {
+    this.getSlides();
   },
 };
 </script>
