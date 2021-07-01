@@ -23,6 +23,9 @@
         </a>
       </div>
     </div>
+    <a href="#" class="brand_button" @click.prevent="$emit('cancel')"
+          >Cancel</a
+        >
   </div>
 </template>
 <script>

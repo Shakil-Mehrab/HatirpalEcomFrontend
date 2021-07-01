@@ -13,11 +13,32 @@
         <i class="fas fa-star"></i>
       </div>
       <hr />
+      <div class="mt-2"
+      v-if="data.old_price"
+      >
+        <strong class="pr-2 my-2"
+          >Old Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </strong>
+        <span style="text-decoration: line-through;">{{ data.old_price }} BDT</span>
+      </div>
+       <div class="mt-2">
+        <strong class="pr-2 my-2"
+          >Sale Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </strong>
+        {{ data.sale_price }} BDT
+      </div>
       <div class="mt-2">
         <strong class="pr-2 my-2"
-          >Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          >Unit :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </strong>
-        {{ data.price }} BDT
+        {{ data.unit }}
+      </div>
+      <div class="mt-2">
+        <strong class="pr-2 my-2"
+        v-if="data.waranty"
+          >Waranty :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </strong>
+        {{ data.waranty }}
       </div>
       <div class="mt-2">
         <div class="size" v-if="data.sizes.length">

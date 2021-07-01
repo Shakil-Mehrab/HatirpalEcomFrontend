@@ -6,6 +6,7 @@
         :selectedAddress="selectedAddress"
         @click="addressSelected"
         v-if="addresses.length"
+        @cancel="selecting = false"
       />
     </div>
     <div v-else-if="creating">
