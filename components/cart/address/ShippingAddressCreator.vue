@@ -1,35 +1,55 @@
 <template>
   <form action="#" @submit.prevent="store">
     <div class="row">
-      <div class="">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Expense"
-          v-model="form.expense"
-          style="display:none"
-        />
-      </div>
-
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-4 mb-2">
         <label for="name" class="control-label">Country</label>
-        <select class="form-control" v-model="form.country" id="country">
-          <option value="">Select One</option>
-          <option value="bangladesh">Bangladesh</option>
+        <select
+          class="form-control"
+          v-model="form.country"
+          id="country"
+          @change.prevent="getDivision()"
+        >
+          <template v-if="countries.length">
+            <option value="">Select One</option>
+            <option
+              :value="country.slug"
+              v-for="country in countries"
+              :key="country.id"
+            >
+              {{ country.name }}
+            </option>
+          </template>
+            <template v-else>
+            <option value="">No Country</option>
+          </template>
         </select>
         <div>
           <span class="help-block" v-if="createAddressError.country">
-            <strong style="color: red">{{
-              createAddressError.country
-            }}</strong>
+            <strong style="color: red">{{ createAddressError.country }}</strong>
           </span>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-4 mb-2">
         <label for="name" class="control-label">Division</label>
-        <select class="form-control" v-model="form.division" id="division">
-          <option value="">Select One</option>
-          <option value="dhaka">Dhaka</option>
+        <select
+          class="form-control"
+          v-model="form.division"
+          id="division"
+          @change.prevent="getDistrict()"
+        >
+          <template v-if="divisions.length">
+            <option value="">Select One</option>
+            <option
+              :value="division.slug"
+              v-for="division in divisions"
+              :key="division.id"
+            >
+              {{ division.name }}
+            </option>
+          </template>
+          <template v-else>
+            <option value="">Select a Country</option>
+          </template>
         </select>
         <div>
           <span class="help-block" v-if="createAddressError.division">
@@ -39,11 +59,27 @@
           </span>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-4 mb-2">
         <label for="name" class="control-label">District</label>
-        <select class="form-control" v-model="form.district" id="district">
+        <select
+          class="form-control"
+          v-model="form.district"
+          id="district"
+          @change.prevent="getDelivary_place()"
+        >
+        <template v-if="districts.length">
           <option value="">Select One</option>
-          <option value="gopalgonj">GopalGonj</option>
+          <option
+            :value="district.slug"
+            v-for="district in districts"
+            :key="district.id"
+          >
+            {{ district.name }}
+          </option>
+        </template>
+         <template v-else>
+            <option value="">Select a Division</option>
+          </template>
         </select>
         <div>
           <span class="help-block" v-if="createAddressError.district">
@@ -53,16 +89,28 @@
           </span>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-4 mb-2">
         <label for="name" class="control-label">Delivery Place</label>
         <select
           class="form-control"
           v-model="form.delivery_place"
           id="delivery_place"
         >
+          <template v-if="delivary_places.length">
           <option value="">Select One</option>
-          <option value="jalirpur">Jalirpur</option>
+          <option
+            :value="delivary_place.slug"
+            v-for="delivary_place in delivary_places"
+            :key="delivary_place.id"
+          >
+            {{ delivary_place.name }}
+          </option>
+          </template>
+          <template v-else>
+            <option value="">Select a District</option>
+          </template>
         </select>
+
         <div>
           <span class="help-block" v-if="createAddressError.delivery_place">
             <strong style="color: red">{{
@@ -71,7 +119,7 @@
           </span>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-4 mb-2">
         <label for="name" class="control-label">Postal Code</label>
         <input
           type="text"
@@ -87,6 +135,23 @@
           </span>
         </div>
       </div>
+       <div class="form-group col-md-4 mb-2">
+        <label for="name" class="control-label">Expense</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Expense"
+          v-model="form.expense"
+          disabled
+        />
+        <div>
+          <span class="help-block" v-if="createAddressError.expense">
+            <strong style="color: red">{{
+              createAddressError.expense
+            }}</strong>
+          </span>
+        </div>
+      </div>
       <div class="form-group col-md-12">
         <label for="name" class="control-label">Address</label>
         <input
@@ -97,9 +162,7 @@
         />
         <div>
           <span class="help-block" v-if="createAddressError.address">
-            <strong style="color: red">{{
-              createAddressError.address
-            }}</strong>
+            <strong style="color: red">{{ createAddressError.address }}</strong>
           </span>
         </div>
       </div>
@@ -123,7 +186,11 @@
 export default {
   data() {
     return {
-      createAddressError:'',
+      countries: [],
+      divisions: [],
+      districts: [],
+      delivary_places: [],
+      createAddressError: "",
       form: {
         country: "",
         division: "",
@@ -131,7 +198,7 @@ export default {
         delivery_place: "",
         postal_code: "",
         address: "",
-        expense: 200,
+        expense: null,
         default: "true",
       },
     };
@@ -139,18 +206,68 @@ export default {
   components: {
     // CountryDropdown
   },
-  methods: {
-    async store() {
-      try{
-        let response = await this.$axios.$post("/api/address", this.form);
-        console.log(this.form)
-        this.$emit("created", response.data);
-      }
-      catch(e){
-        this.createAddressError=e.response.data.errors
-      }
-      
+  watch:{
+    'form.country'(addressId){
+      this.form.division=""
     },
+    'form.division'(addressId){
+      this.form.district=""
+    },
+     'form.district'(addressId){
+      this.form.delivery_place=""
+      this.form.expense=null
+
+    },
+  },
+  methods: {
+    async getCountries() {
+      let response = await this.$axios.$get("api/country?countries=Bangladesh");
+      this.countries = response.data;
+    },
+    async getDivision() {
+      if (this.form.country) {
+        let response = await this.$axios.$get(
+          `api/region/${this.form.country}`
+        );
+        this.divisions = response.data;
+      } else {
+        this.divisions = [];
+      }
+    },
+    async getDistrict() {
+      if (this.form.division) {
+        let response = await this.$axios.$get(
+          `api/region/${this.form.division}`
+        );
+        this.districts = response.data;
+
+      } else {
+        this.districts = [];
+      }
+    },
+    async getDelivary_place() {
+      if (this.form.district) {
+        let response = await this.$axios.$get(
+          `api/region/${this.form.district}`
+        );
+        this.delivary_places = response.data;
+        this.form.expense = response.meta.expense;
+
+      } else {
+        this.delivary_places = [];
+      }
+    },
+    async store() {
+      try {
+        let response = await this.$axios.$post("/api/address", this.form);
+        this.$emit("created", response.data);
+      } catch (e) {
+        this.createAddressError = e.response.data.errors;
+      }
+    },
+  },
+  created() {
+    this.getCountries();
   },
 };
 </script>

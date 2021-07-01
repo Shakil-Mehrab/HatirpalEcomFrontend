@@ -71,7 +71,7 @@
             </a>
           </li>
           <li class="mx-2">
-            <a href="">
+            <nuxt-link :to="{name:'order'}">
               <svg
                 class="header_icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@
                 />
               </svg>
               <span class="top_right_option">Orders</span>
-            </a>
+            </nuxt-link>
           </li>
           <li class="mx-2">
             <nuxt-link :to="{name:'cart'}">

@@ -58,6 +58,15 @@ a:hover {
   border: var(--button-border);
   overflow: hidden;
 }
+.btn {
+  box-shadow: unset !important;
+}
+input{
+  box-shadow: unset !important;
+}
+select{
+  box-shadow: unset !important;
+}
 .brand_button {
   background-color: var(--brand-color);
   color: white;

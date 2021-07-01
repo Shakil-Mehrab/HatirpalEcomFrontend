@@ -81,9 +81,9 @@ export const actions={
       let response= await this.$axios.$post('api/cart',{
         products
       })
-    //  dispatch('getCart')
+     dispatch('getCart')
   },
-  // async setShipping({ commit },shipping){
-  //  commit('SET_SHIPPING',shipping)
-  // }
+  async setShipping({ commit },shipping){
+   commit('SET_SHIPPING',shipping)
+  }
 }

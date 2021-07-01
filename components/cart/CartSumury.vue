@@ -1,7 +1,6 @@
 <template>
   <fragment>
     <div class="col-md-12">
-      {{products}}
       <div class="overflow-scroll cart">
         <table class="table table-bordered">
           <thead>
@@ -38,10 +37,11 @@
               <td class="text-center">Tax</td>
               <td class="text-center">4000</td>
             </tr> -->
-            <tr>
+            <!-- <tr>
               <td class="text-center">Grand Total</td>
               <td class="text-center">{{total}}</td>
-            </tr>
+            </tr> -->
+            <slot name="rows" />
           </tbody>
         </table>
       </div>

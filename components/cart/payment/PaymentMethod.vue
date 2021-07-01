@@ -2,49 +2,48 @@
   <div class="row">
     <template v-if="selecting">
       <PaymentMethodSelector
-        :payment-methods="paymentMethods"
-        :selected-payment-method="selectedPaymentMethod"
         @click="paymentMethodSelected"
+        :selected-payment-method="selectedPaymentMethod"
       />
+        <!-- :payment-methods="paymentMethods" -->
     </template>
-    <template v-else-if="creating">
+    <!-- <template v-else-if="creating">
       <PaymentMethodCreator @cancel="creating = false" @added="created" />
-    </template>
+    </template> -->
     <template v-else>
       <h6><img src="@/assets/images/bkash.png" width="25px" alt="" /> Bkash</h6>
       <div>
         <a href="" class="brand_button" @click.prevent="selecting = true"
           >Change Payment Method</a
         >
-        <a href="" class="brand_button" @click.prevent="creating = true"
+        <!-- <a href="" class="brand_button" @click.prevent="creating = true"
           >Add a Payment Method</a
-        >
+        > -->
       </div>
     </template>
   </div>
 </template>
 <script>
 import PaymentMethodSelector from "@/components/cart/payment/PaymentMethodSelector";
-import PaymentMethodCreator from "@/components/cart/payment/PaymentMethodCreator";
+// import PaymentMethodCreator from "@/components/cart/payment/PaymentMethodCreator";
 
 export default {
   data() {
     return {
       selecting: false,
-      creating: false,
-      localPaymentMethods: this.paymentMethods,
+      // creating: false,
+      // localPaymentMethods: this.paymentMethods,
       selectedPaymentMethod: null,
     };
   },
   watch: {
     selectedPaymentMethod(paymentMethod) {
-      ///checkout-index page a address_id dynamic change er jonno eta
-      this.$emit("input", paymentMethod.id); //checkout-index page er v-model **input** listen kore
+      this.$emit("input", paymentMethod);
     },
   },
   components: {
     PaymentMethodSelector,
-    PaymentMethodCreator
+    // PaymentMethodCreator
   },
   props: {
     // paymentMethods: {
@@ -54,10 +53,8 @@ export default {
   },
   computed: {
     defaultPaymentMethod() {
-      // return this.localAddresses.find((address)=>{
-      //   return address.default ===true;
-      // })
-      return this.localPaymentMethods.find((p) => p.default === 1); //this.localAddresses=addresses a=address jata database theke asche.default adress table theke
+      // return this.localPaymentMethods.find((p) => p.default === 1); 
+      return "bkash"
     },
   },
   methods: {
@@ -68,17 +65,15 @@ export default {
     switchPaymentMethod(paymentMethod) {
       this.selectedPaymentMethod = paymentMethod;
     },
-    created(paymentMethod) {
-      //ShippingAddressCreator theke response.data meand address niye asche
-      this.localPaymentMethods.push(paymentMethod);
-      this.creating = false;
-      this.switchPaymentMethod(paymentMethod);
-    },
+    // created(paymentMethod) {
+    //   this.localPaymentMethods.push(paymentMethod);
+    //   this.creating = false;
+    //   this.switchPaymentMethod(paymentMethod);
+    // },
   },
   created() {
-    //created age.created switch  call krche
     // if (this.paymentMethods.length) {
-    //   this.switchPaymentMethod(this.defaultPaymentMethod);
+      this.switchPaymentMethod(this.defaultPaymentMethod);
     // }
   },
 };

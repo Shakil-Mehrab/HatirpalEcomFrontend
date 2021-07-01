@@ -18,6 +18,7 @@
         <li>{{ selectedAddress.district }}</li>
         <li>{{ selectedAddress.place }}</li>
         <li>{{ selectedAddress.address }}</li>
+        <li>{{ selectedAddress.expense }}</li>
       </ul>
       <div class="my-2">
         <a href="" class="brand_button" @click.prevent="selecting = true">
@@ -43,11 +44,11 @@ export default {
     };
   },
 
-  // watch: {
-  //   selectedAddress(address) {
-  //     this.$emit("input", address.id);
-  //   },
-  // },
+  watch: {
+    selectedAddress(address) {
+      this.$emit("input", address.id);
+    },
+  },
   components: {
     ShippingAddressSelector,
     ShippingAddressCreator,
@@ -66,7 +67,7 @@ export default {
       if(this.localAddresses.find((a) => a.default === 1)){
         return this.localAddresses.find((a) => a.default === 1);
       }
-      return this.addresses[0]
+      return this.addresses[0] //by shakil
     },
   },
   methods: {
@@ -77,7 +78,7 @@ export default {
     switchAddress(address) {
       this.selectedAddress = address;
     },
-    created(address){//ShippingAddressCreator theke response.data meand address niye asche
+    created(address){
       this.localAddresses.push(address)
       this.creating = false
       this.switchAddress(address)

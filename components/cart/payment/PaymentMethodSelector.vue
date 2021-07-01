@@ -18,15 +18,20 @@
 </template>
 <script>
 export default {
+  data(){
+    return{
+    paymentMethod:"bkash"
+    }
+  },
   props: {
-    paymentMethods: {
-      required: true,
-      type: Array,
-    },
-    selectedPaymentMethod: {
-      required: true,
-      type: Object,
-    },
+    // paymentMethods: {
+    //   required: true,
+    //   type: Array,
+    // },
+    // selectedPaymentMethod: {
+    //   required: true,
+    //   type: Object,
+    // },
   },
 };
 </script>
