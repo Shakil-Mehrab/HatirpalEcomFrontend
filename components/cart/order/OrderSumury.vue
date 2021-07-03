@@ -7,9 +7,10 @@
         <div v-for="product in order.products" :key="product.id" class="my-2">
           <img :src="product.thumbnail" alt="order_image" width="30px" />
           {{ product.name }} (Qty : {{ product.qty }}) (size :
-          {{ product.size }})
+          {{ product.size_id }})
         </div>
       </td>
+      <td class="text-center">{{ order.subtotal }}</td>
       <td class="text-center">{{ order.total }}</td>
       <td class="text-center">
          <component :is="order.status" :order="order"/>

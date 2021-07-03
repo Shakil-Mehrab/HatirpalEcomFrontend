@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <h6><strong>Select Shipping Address</strong></h6> -->
     <div class="my-2 all_address" v-for="address in addresses" :key="address.id">
       <div class="mb-2">
         <ul :class="{'selected_address' : address.id===selectedAddress.id}">

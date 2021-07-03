@@ -2,17 +2,22 @@
   <div class="container mx-auto">
     <div class="row bg-white">
       <h6 class="mt-2"><strong>Checkout</strong></h6>
-    
+    {{errors}}
       <Progressbar nameOfPage="checkout" />
       <div class="col-md-9">
         <article class="bg-white">
           <h6><strong>Ship to</strong></h6>
           <ShippingAddress :addresses="addresses" v-model="form.address_id" />
+           <span class="help-block" v-if="errors">
+            <strong style="color: red">{{
+              errors["address_id"]
+            }}</strong>
+          </span>
         </article>
         <hr />
         <article class="bg-white">
           <h6><strong>Payment Method</strong></h6>
-          <PaymentMethod v-model="form.payment_method_id"/>
+          <PaymentMethod v-model="form.payment_method"/>
         </article>
         <hr />
 
@@ -23,6 +28,11 @@
               <option value="">Select One</option>
               <option :value="shippingway.name" v-for="shippingway in shippingWays" :key="shippingway.id">{{shippingway.name}}</option>
             </select>
+            <span class="help-block" v-if="errors">
+            <strong style="color: red">{{
+              errors["shipping_method"]
+            }}</strong>
+          </span>
           </div>
         </article>
         <hr>
@@ -79,9 +89,10 @@ export default {
       shippingMethods: [],
       paymentMethods: [],
       shippingWays:[],
+      errors:"",
       form: {
         address_id: null,
-        payment_method_id: null,
+        payment_method: null,
         shipping_method:""
       },
     };
@@ -134,7 +145,6 @@ export default {
       try {
         await this.$axios.$post("api/order", {
           ...this.form,
-          // shipping_method_id: this.shippingMethodId
         });
         await this.getCart();
         this.$router.replace({
@@ -142,7 +152,7 @@ export default {
         });
       } catch (e) {
         // this.flash(e.response.data.message);
-        this.getCart();
+       this.errors= e.response.data.errors
       }
       this.submitting = false;
     },

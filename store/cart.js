@@ -57,7 +57,8 @@ export const actions={
     if(state.shipping){
       query.shipping_method_id = state.shipping.id
     }
-    let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
+    try{
+      let response= await this.$axios.$get(`api/cart?${queryString.stringify(query)}`)
     //cart a query er madhome shipping method pathailo.jate oi valu cart totale add hoy
     commit('SET_PRODUCTS', response.data.products)
     commit('SET_EMPTY', response.meta.empty)
@@ -65,6 +66,10 @@ export const actions={
     commit('SET_TOTAL', response.meta.total)
     commit('SET_CHANGED', response.meta.changed)
     return response
+    }catch(e){
+      console.log("Errors in get cart.May be in app service provider")
+    }
+    
   },
   async destroy({ dispatch },productId){
     let response= await this.$axios.$delete(`api/cart/${productId}`);

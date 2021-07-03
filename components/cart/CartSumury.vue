@@ -18,7 +18,6 @@
            v-for="product in products" 
            :key="product.id" 
            :product="product"/> 
-                <!-- <slot name="rows" /> -->
           </tbody>
         </table>
       </div>

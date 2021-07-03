@@ -111,7 +111,7 @@
         <input
           type="number"
           class="form-control"
-          min="12"
+          :min="data.minimum_order"
           placeholder="Quantity"
           v-model="form.quantity"
           style="width: 200px"
@@ -133,18 +133,16 @@
       <div class="my-2">
         <h3 class="text-center">About this item</h3>
         <ul>
-          <li v-for="n in 5" :key="n">
+          <li>
             <a href="#">
-              &#9679; Dimensions with Stand (W x H x D): 28.8" x 18.9" x 7.1" |
-              Without Stand (W x H x D): 28.8" x 17.2" x 2.9" | Weight with
-              Stand: 8.2 lbs | Weight without Stand: 8.0 lbs
+            {{data.description}}
             </a>
           </li>
         </ul>
       </div>
       <hr />
       <br />
-      <ProductBodyCertificketComment />
+      <ProductBodyCertificketComment :data="data"/>
     </form>
   </div>
 </template>
@@ -162,7 +160,7 @@ export default {
         product_id: this.data.id,
         size_id: "",
         image_id: "",
-        quantity: 12,
+        quantity: this.data.minimum_order,
       },
     };
   },

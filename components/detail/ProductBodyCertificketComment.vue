@@ -45,10 +45,7 @@
           <tr>
             <td class="border">
               <p class="p-2 text-customcolor-400">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-                labore, iusto, corrupti iure beatae ut vero excepturi sapiente,
-                voluptate qui officia cumque amet esse recusandae? Eius amet
-                delectus aspernatur perspiciatis?
+                {{ data.description }}
               </p>
             </td>
           </tr>
@@ -139,6 +136,12 @@ export default {
     return {
       option: "comment",
     };
+  },
+  props: {
+    data: {
+      required: true,
+      type: Object,
+    },
   },
   methods: {
     ShowOption(arg) {

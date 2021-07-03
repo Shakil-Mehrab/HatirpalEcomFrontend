@@ -14,7 +14,7 @@ export default {
     script: [{ src: "https://kit.fontawesome.com/bb2f33706c.js" }],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
-
+  loading:{color:'violet'},
   css: [
     "@/assets/css/bootstrap/bootstrap.css",
     "@/assets/css/style.css",
@@ -44,7 +44,6 @@ export default {
   buildModules: [],
 
   modules: [
-    // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "@nuxtjs/auth-next"
   ],
@@ -68,32 +67,12 @@ export default {
           }
         }
       },
-      // laravelSanctumCartStore: {
-      //   provider: "laravel/sanctum",
-      //   url: "http://localhost:8000",
-      //   endpoints: {
-      //     login: {
-      //       url: "/api/cart"
-      //     }
-      //   }
-      // },
-      // laravelSanctumCartStore: {
-      //   provider: "laravel/sanctum",
-      //   url: "http://localhost:8000",
-      //   endpoints: {
-      //     login: {
-      //       url: "/api/cart"
-      //     }
-      //   }
-      // }
     }
   },
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: "http://localhost:8000",
     credentials:true
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}
 };

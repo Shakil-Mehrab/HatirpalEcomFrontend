@@ -2,8 +2,7 @@
   <div class="container mx-auto">
     <div class="row bg-white mt-2">
       <div class="col-md-12 my-2">
-          Home > All Industries > Apparel > Plus Size Clothing > Plus Size
-          Jackets Subscribe to Trade Alert
+          Home > <a href="#">{{data.categories[0].name}}</a>
          
       </div>
       <div class="col-md-6">

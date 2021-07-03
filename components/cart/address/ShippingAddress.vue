@@ -1,13 +1,14 @@
 <template>
   <div class="shipping_address">
     <div v-if="selecting">
-      <ShippingAddressSelector
-        :addresses="addresses"
-        :selectedAddress="selectedAddress"
-        @click="addressSelected"
-        v-if="addresses.length"
-        @cancel="selecting = false"
-      />
+      <template v-if="addresses.length">
+        <ShippingAddressSelector
+          :addresses="addresses"
+          :selectedAddress="selectedAddress"
+          @click="addressSelected"
+          @cancel="selecting = false"
+        />
+      </template>
     </div>
     <div v-else-if="creating">
       <ShippingAddressCreator @cancel="creating = false" @created="created" />
@@ -21,8 +22,8 @@
         <li>{{ selectedAddress.address }}</li>
         <li>{{ selectedAddress.expense }}</li>
       </ul>
-      <div class="my-2">
-        <a href="" class="brand_button" @click.prevent="selecting = true">
+      <div class="my-2" >
+        <a href="" class="brand_button" @click.prevent="selecting = true" v-if="addresses.length">
           Change Shipping Address</a
         >
         <a href="" class="brand_button" @click.prevent="creating = true"
@@ -65,10 +66,10 @@ export default {
       // return this.localAddresses.find((address)=>{
       //   return address.default ===true;
       // })
-      if(this.localAddresses.find((a) => a.default === 1)){
+      if (this.localAddresses.find((a) => a.default === 1)) {
         return this.localAddresses.find((a) => a.default === 1);
       }
-      return this.addresses[0] //by shakil
+      return this.addresses[0]; //by shakil
     },
   },
   methods: {
@@ -79,11 +80,11 @@ export default {
     switchAddress(address) {
       this.selectedAddress = address;
     },
-    created(address){
-      this.localAddresses.push(address)
-      this.creating = false
-      this.switchAddress(address)
-    }
+    created(address) {
+      this.localAddresses.push(address);
+      this.creating = false;
+      this.switchAddress(address);
+    },
   },
   created() {
     if (this.addresses.length) {
