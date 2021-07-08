@@ -44,13 +44,21 @@
 .order {
   overflow: scroll;
 }
-.order_status_div {
+.order_status_ul {
   display: flex;
   align-items: center;
 }
+.order_status_ul .ul_li{
+  position: relative;
+}
+.status_title{
+  position: absolute;
+  bottom: -14px;
+  left: -10px;
+}
 .order_status {
-  width: 160px;
-  height: 50px;
+  width: 25px;
+  height: 25PX;
   border: 1px dashed green;
   border-radius: 50%;
   align-items: center;
@@ -58,8 +66,29 @@
   padding: 3px;
   overflow: hidden;
   justify-content: center;
-  font-size: 11px;
+  font-size: 14px;
   color: white;
+}
+.status_pending{
+  background:#F0F13E
+}
+.status_confirmed{
+  background:#eef234
+}
+.status_processing{
+  background:#d9e900
+}
+.status_picked{
+  background:#cce901
+}
+.status_shipped{
+  background:#9ee11e
+}
+.status_complete{
+  background:#31aa01
+}
+.status_failed{
+  background: red;
 }
 .border_between_status {
   width: 100%;

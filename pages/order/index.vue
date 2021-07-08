@@ -3,16 +3,8 @@
     <div class="row bg-white my-3">
       <h6 class="mt-2"><strong>Order</strong></h6>
       <div class="col-md-12 order">
-        <div class="my-2 order_status_div">
-          <div class="order_status bg-warning">Pendig</div>
-          <div class="px-2 mx-2 border_between_status"></div>
-          <div class="order_status bg-info">Process</div>
-          <div class="px-2 mx-2 border_between_status"></div>
-          <div class="order_status bg-success">Complete</div>
-           <div class="px-2 mx-2 border_between_status"></div>
-          <div class="order_status bg-danger">Failed</div>
-        </div>
-        <table class="table table-hover" v-if="orders.length">
+        
+        <table class="table table-hover table-bordered" v-if="orders.length">
           <thead>
             <tr>
               <th class="text-center">Order Id</th>
@@ -24,6 +16,7 @@
             </tr>
           </thead>
           <tbody>
+            
             <OrderSumury
               v-for="order in orders"
               :key="order.id"

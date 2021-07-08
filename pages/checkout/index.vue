@@ -41,7 +41,7 @@
           <CartSumury>
             <template slot="rows" v-if="shippingMethodId">
               <tr>
-                <td class="text-center">Shipping</td>
+                <td class="text-center">Shipping Cost</td>
                 <td class="text-center">{{shipping.expense}}</td>
               </tr>
               <tr>

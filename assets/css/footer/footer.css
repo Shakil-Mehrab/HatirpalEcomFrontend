@@ -4,3 +4,54 @@
   bottom: 0;
   width: 100vw;
 } */
+.company_name{
+  color: var(--brand-color);
+}
+.social_icon{
+  font-size: 30px;
+  text-align: right;
+  color: var(--brand-color);
+}
+/* about us  */
+.owner_img{
+  max-height: 350px;
+  overflow: hidden;
+}
+.social_member{
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+
+}
+
+.social_member li a{
+  display: flex;
+  white-space: nowrap;
+}
+.social_member i{
+ font-size: 20px;
+ margin-right: 2px;
+}
+/* contact  */
+.contact_option{
+  display: flex;
+  justify-content: space-between;
+}
+.contact_option i{
+  font-size: 20px;
+  color: var(--brand-color);
+}
+/* condition  */
+.condition h3{
+ color: var(--brand-color);
+}
+.condition h5{
+  color: orange;
+ }
+ .condition h4{
+  color: orangered;
+ }
+ .condition ul li{
+   font-size: 20px;
+ }

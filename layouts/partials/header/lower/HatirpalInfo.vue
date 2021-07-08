@@ -18,13 +18,13 @@
         <li class="px-2 text-sm font-semibold">
           <a href="">Sell on Alibaba </a>
         </li>
-        <li class="px-2 text-sm font-semibold"><a href="">Help </a></li>
+        <!-- <li class="px-2 text-sm font-semibold"><a href="">Help </a></li> -->
       </ul>
     </div>
     <div class="col-md-3 lower_info_right_end">
       <ul class="lower_info_ul">
         <li class="px-2 text-sm font-semibold">
-          <a href="">Get The Help</a>
+          <nuxt-link :to="{name:'contact'}">Get The Help</nuxt-link>
         </li>
         <li class="currency">
           

@@ -18,7 +18,7 @@
     </div>
     <div class="row bg-white">
       <SlideSectionOne
-          endpoints="product?categories=food&per-page=20"
+          endpoints="product?categories=electronics&per-page=20"
           :short_des="true"
           :skeleton="6"
         />

@@ -13,18 +13,18 @@
       <td class="text-center">{{ order.subtotal }}</td>
       <td class="text-center">{{ order.total }}</td>
       <td class="text-center">
-         <component :is="order.status" :order="order"/>
+        <div class="btn btn-sm" :class="'status_' + order.status">
+          {{ order.status }}
+        </div>
       </td>
     </tr>
+    <Status :order="order" />
   </fragment>
 </template>
 <script>
-import OrderStatusPaymentFailed from "@/components/cart/order/Status/Status-payment_failed";
-import OrderStatusPending from "@/components/cart/order/Status/Status-pending";
-import OrderStatusProcessing from "@/components/cart/order/Status/Status-processing";
-import OrderStatusCompleted from "@/components/cart/order/Status/Status-completed";
-
+import Status from "@/components/cart/order/Status";
 export default {
+  
   props: {
     order: {
       required: true,
@@ -32,10 +32,7 @@ export default {
     },
   },
   components: {
-    payment_failed: OrderStatusPaymentFailed,
-    pending: OrderStatusPending,
-    processing: OrderStatusProcessing,
-    completed: OrderStatusCompleted,
+    Status
   },
 };
 </script>
