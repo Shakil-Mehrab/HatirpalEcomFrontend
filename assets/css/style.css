@@ -61,10 +61,10 @@ a:hover {
 .btn {
   box-shadow: unset !important;
 }
-input{
+input {
   box-shadow: unset !important;
 }
-select{
+select {
   box-shadow: unset !important;
 }
 .brand_button {
@@ -92,6 +92,9 @@ select{
 .hover_shadow:hover {
   box-shadow: 0.125px 1px 5px var(--brand-color) !important;
   padding-bottom: 1px;
+}
+.old_price {
+  text-decoration: line-through;
 }
 /* header  */
 .header_full {

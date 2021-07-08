@@ -4,7 +4,7 @@
       <div></div>
       <h3>{{ data.name }}</h3>
       <div style="color:red">{{requiredErrors}}</div>
-      {{ data }}
+      <!-- {{ data }} -->
       <div style="color: orange">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -132,13 +132,7 @@
       <hr />
       <div class="my-2">
         <h3 class="text-center">About this item</h3>
-        <ul>
-          <li>
-            <a href="#">
-            {{data.description}}
-            </a>
-          </li>
-        </ul>
+        <div v-html="data.description"></div>
       </div>
       <hr />
       <br />

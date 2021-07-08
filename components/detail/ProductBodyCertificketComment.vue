@@ -44,8 +44,8 @@
         <tbody>
           <tr>
             <td class="border">
-              <p class="p-2 text-customcolor-400">
-                {{ data.description }}
+              <p class="p-2 text-customcolor-400" v-html="data.description">
+                
               </p>
             </td>
           </tr>

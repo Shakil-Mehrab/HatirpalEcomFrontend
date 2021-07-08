@@ -31,10 +31,13 @@
                 />
               </nuxt-link>
               <div class="product_attribute">
-                <p class="mt-2 mb-1" v-if="data.price">{{data.price}} BDT</p>
+                <p class="mt-2 mb-1" >
+                  <span v-if="data.sale_price">{{data.sale_price}} BDT</span>
+                  <span class="old_price" v-if="data.old_price">{{data.old_price}} BDT</span>
+                </p>
                 <nuxt-link :to="link(data)" exact v-if="data.name" ><h6 class="">{{data.name}}</h6></nuxt-link>
-                <p class="" v-if="data.short_description">
-                 {{data.short_description}}
+                <p class="" v-if="data.short_description" v-html="data.description">
+                
                 </p>
               </div>
             </div>
