@@ -4,6 +4,7 @@
             <h6 class="mt-2"><strong>Pay Now</strong></h6>
             <div class="col-md-6">
                 <ul>
+                    <!-- {{data}} -->
                     <li><strong>Order id #</strong> {{data.order_id}}</li>
                     <li><strong>Total amount #</strong> {{data.total}}</li>
                     <li>

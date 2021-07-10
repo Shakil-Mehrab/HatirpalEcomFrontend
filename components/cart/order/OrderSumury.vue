@@ -25,8 +25,15 @@
         <template>{{order.payment_id}}</template>
       </td>
       <td class="text-center">
-        <template v-if="order.payment_status=='pending'"><nuxt-link :to="{name:'payment-slug',params:{slug:order.slug}}" class="btn btn-info btn-sm">Pay now</nuxt-link></template>
-        <template v-else><span class="btn btn-success btn-sm">{{order.payment_status}}</span> </template>
+        <template v-if="order.status=='pending'">
+          Wait for confirmation
+        </template>
+        <template v-else>
+          <span class="btn btn-success btn-sm" v-if="order.status!='confirmed'">{{order.payment_status}}</span> 
+          <nuxt-link :to="{name:'payment-slug',params:{slug:order.slug}}" class="btn btn-info btn-sm" v-else>
+            Pay now
+          </nuxt-link>
+        </template>
 
       </td>
     </tr>

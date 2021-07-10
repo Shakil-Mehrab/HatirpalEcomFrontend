@@ -107,7 +107,7 @@ export default {
       errors: "",
       form: {
         address_id: null,
-        payment_method: "Hatirpal",
+        payment_method: "Hatirpal Pay",
         shipping_method: "",
       },
     };

@@ -37,8 +37,10 @@ export default {
     "@/plugins/VueZoomOnHover",
     "@/plugins/VueLazyload",
     '@/plugins/VueContentPlaceholders',
+    '@/plugins/VueSweetAlert',
+
     // '@/plugins/VueStarRating',
-    { src: "~/plugins/VueStarRating.js", mode: "client" },
+    // { src: "~/plugins/VueStarRating.js", mode: "client" },
   ],
 
   components: true,

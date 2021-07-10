@@ -88,40 +88,12 @@
         </div>
       </div>
       <div class="mt-2">
-        <div class="color" v-if="data.productImages.length">
+        <div class="color">
           <strong class="pr-2 my-2">
             Color :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
           >
           <ul>
-            <li
-              class="mx-2 mb-2"
-              v-for="color in data.productImages"
-              :key="color.id"
-            >
-              <input
-                type="radio"
-                class="btn-check"
-                :id="color.id"
-                :value="color.id"
-                v-model="form.image"
-              />
-              <label class="btn btn-outline-success" :for="color.id">
-                <img
-                  v-if="color.thumbnail"
-                  v-lazy="color.thumbnail"
-                  :alt="color.slug"
-                  width="100%"
-                />
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div class="color" v-else>
-          <strong class="pr-2 my-2">
-            Color :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
-          >
-          <ul>
-            <li class="mx-2 mb-2">
+             <li class="mx-2 mb-2">
               <input
                 type="radio"
                 class="btn-check"
@@ -138,11 +110,34 @@
                 />
               </label>
             </li>
+            <template v-if="data.productImages.length">
+            <li
+              class="mx-2 mb-2"
+              v-for="color in data.productImages"
+              :key="color.id"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                :id="color.id"
+                :value="color.thumbnail"
+                v-model="form.image"
+              />
+              <label class="btn btn-outline-success" :for="color.id">
+                <img
+                  v-if="color.thumbnail"
+                  v-lazy="color.thumbnail"
+                  :alt="color.slug"
+                  width="100%"
+                />
+              </label>
+            </li>
+            </template>
           </ul>
         </div>
         <div>
           <span class="help-block" v-if="requiredErrors">
-            <strong style="color: red">{{
+            <strong style="color: red" >{{
               requiredErrors["products.0.image"]
             }}</strong>
           </span>
