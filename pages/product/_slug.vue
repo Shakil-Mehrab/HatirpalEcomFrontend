@@ -32,6 +32,11 @@ import ProductDetailSection from "@/components/detail/ProductDetailSection";
 import SlideSectionOne from "@/components/indexPage/ProductSlide/SlideSectionOne";
 import CategoryHeading from "@/components/indexPage/Heading/CategoryHeading";
 export default {
+  data(){
+    return{
+      data:""
+    }
+  },
   components: {
     ProductImageSection,
     ProductDetailSection,
@@ -48,9 +53,9 @@ export default {
           data: response.data
         };
       } catch (e) {
-        error({
-          statusCode: e.response.status
-        });
+        // error({
+        //   statusCode: e.response.status
+        // });
       }
     }
 };

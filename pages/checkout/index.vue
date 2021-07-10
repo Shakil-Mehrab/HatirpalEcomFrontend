@@ -2,47 +2,62 @@
   <div class="container mx-auto">
     <div class="row bg-white">
       <h6 class="mt-2"><strong>Checkout</strong></h6>
-    {{errors}}
+      {{ errors }}
       <Progressbar nameOfPage="checkout" />
       <div class="col-md-9">
         <article class="bg-white">
           <h6><strong>Ship to</strong></h6>
           <ShippingAddress :addresses="addresses" v-model="form.address_id" />
-           <span class="help-block" v-if="errors">
-            <strong style="color: red">{{
-              errors["address_id"]
-            }}</strong>
+          <span class="help-block" v-if="errors">
+            <strong style="color: red">{{ errors["address_id"] }}</strong>
           </span>
         </article>
         <hr />
-        <article class="bg-white">
+        <!-- <article class="bg-white">
           <h6><strong>Payment Method</strong></h6>
           <PaymentMethod v-model="form.payment_method"/>
         </article>
-        <hr />
+        <hr /> -->
 
-        <article class="message">
+        <div class="message row">
           <h6><strong>Shipping Method</strong></h6>
           <div class="col-md-6">
             <select class="form-control" v-model="form.shipping_method">
               <option value="">Select One</option>
-              <option :value="shippingway.name" v-for="shippingway in shippingWays" :key="shippingway.id">{{shippingway.name}}</option>
+              <option
+                :value="shippingway.name"
+                v-for="shippingway in shippingWays"
+                :key="shippingway.id"
+              >
+                {{ shippingway.name }}
+              </option>
             </select>
             <span class="help-block" v-if="errors">
-            <strong style="color: red">{{
-              errors["shipping_method"]
-            }}</strong>
-          </span>
+              <strong style="color: red">{{
+                errors["shipping_method"]
+              }}</strong>
+            </span>
           </div>
-        </article>
-        <hr>
+          <div
+            class="col-md-6 text-danger"
+            v-if="
+              form.shipping_method == 'Flight' ||
+              form.shipping_method == 'Ship' ||
+              form.shipping_method == 'Pickup Van' ||
+              form.shipping_method == 'Truck'
+            "
+          >
+            <h6>Extra Charge Required. <strong style="white-space: nowrap;">Contact Us: +8801400560808</strong></h6>
+          </div>
+        </div>
+        <hr />
         <article v-if="products.length">
           <h6><strong>Cart Sumury</strong></h6>
           <CartSumury>
             <template slot="rows" v-if="shippingMethodId">
               <tr>
                 <td class="text-center">Shipping Cost</td>
-                <td class="text-center">{{shipping.expense}}</td>
+                <td class="text-center">{{ shipping.expense }}</td>
               </tr>
               <tr>
                 <td class="text-center">Total</td>
@@ -88,12 +103,12 @@ export default {
       addresses: [],
       shippingMethods: [],
       paymentMethods: [],
-      shippingWays:[],
-      errors:"",
+      shippingWays: [],
+      errors: "",
       form: {
         address_id: null,
-        payment_method: null,
-        shipping_method:""
+        payment_method: "Hatirpal",
+        shipping_method: "",
       },
     };
   },
@@ -148,26 +163,28 @@ export default {
         });
         await this.getCart();
         this.$router.replace({
-          name: "order"
+          name: "order",
         });
       } catch (e) {
         // this.flash(e.response.data.message);
-       this.errors= e.response.data.errors
+        this.errors = e.response.data.errors;
       }
       this.submitting = false;
     },
     async getShippingMethodsForAddress(addressId) {
-      let response = await this.$axios.$get(`api/address/${addressId}/shipping`);
+      let response = await this.$axios.$get(
+        `api/address/${addressId}/shipping`
+      );
       this.shippingMethods = response.data; //comment by shakil for expense
       return response;
-    }
+    },
   },
   async asyncData({ app }) {
     let address = await app.$axios.$get("api/address");
     let shippingWays = await app.$axios.$get("api/shipping/method");
     return {
       addresses: address.data,
-      shippingWays: shippingWays.data
+      shippingWays: shippingWays.data,
     };
   },
 };

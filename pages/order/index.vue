@@ -3,8 +3,9 @@
     <div class="row bg-white my-3">
       <h6 class="mt-2"><strong>Order</strong></h6>
       <div class="col-md-12 order">
-        
-        <table class="table table-hover table-bordered" v-if="orders.length">
+        {{orders}}
+        <table class="table table-hover table-bordered" >
+          <!-- v-if="orders.length" -->
           <thead>
             <tr>
               <th class="text-center">Order Id</th>
@@ -12,7 +13,10 @@
               <th class="">Products</th>
               <th class="text-center">Subtotal</th>
               <th class="text-center">Total</th>
-              <th class="text-center">Status</th>
+              <th class="text-center">Order Status</th>
+              <th class="text-center">Payment Method</th>
+              <th class="text-center">Payment Id</th>
+              <th class="text-center">Payment Status</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +28,7 @@
             />
           </tbody>
         </table>
-        <div class="text-center mb-4" v-else>
+        <div class="text-center mb-4">
           <h6>No Order</h6>
         </div>
       </div>
@@ -33,6 +37,7 @@
 </template>
 <script>
 import OrderSumury from "@/components/cart/order/OrderSumury";
+
 export default {
   data() {
     return {

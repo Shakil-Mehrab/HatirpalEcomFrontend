@@ -17,11 +17,7 @@
     <td class="text-center">
       <select v-model="size_id" @change.prevent="size()">
         <option value="">Select One</option>
-        <option
-          :value="size.id"
-          v-for="size in product.sizes"
-          :key="size.id"
-        >
+        <option :value="size.id" v-for="size in product.sizes" :key="size.id">
           <!-- :selected="size.id == product.size_id" -->
 
           {{ size.size }}
@@ -29,7 +25,12 @@
       </select>
     </td>
     <td class="text-center">
-      <input type="number" v-model="quantity" />
+      <input
+        type="number"
+        :min="product.minimum_order"
+        :step="product.minimum_order"
+        v-model="quantity"
+      />
     </td>
     <td class="text-center">{{ product.total }}</td>
   </tr>
@@ -37,10 +38,10 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  data(){
-    return{
-      size_id:this.product.size_id
-    }
+  data() {
+    return {
+      size_id: this.product.size_id,
+    };
   },
   computed: {
     quantity: {
@@ -64,15 +65,15 @@ export default {
   },
   methods: {
     size() {
-      if(this.size_id){
-      this.update({
+      if (this.size_id) {
+        this.update({
           productId: this.product.id,
           size_id: this.size_id,
-          quantity:this.product.quantity,
+          quantity: this.product.quantity,
         });
       }
     },
-    
+
     ...mapActions({
       destroy: "cart/destroy",
       update: "cart/update",

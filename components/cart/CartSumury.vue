@@ -14,6 +14,7 @@
             </tr>
           </thead>
           <tbody>
+            <!-- {{products}} -->
            <CartProductVariation 
            v-for="product in products" 
            :key="product.id" 

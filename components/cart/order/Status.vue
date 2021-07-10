@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td colspan="6" class="px-4">
+    <td colspan="9" class="px-4">
       <ul class="my-2 order_status_ul">
         <li class="ul_li">
           <div class="order_status" :class="status_pending">1</div>

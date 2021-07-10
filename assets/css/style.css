@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 :root {
   --link-color: #666;
-  --link-violet: violet;
-  --brand-color: violet;
-  --extra-violet: rgb(57, 3, 68);
+  --link-violet: #003366;
+  --brand-color: #003366;
+  --extra-violet: #26e0c6;
   --transition: all 0.5s ease-in-out;
   --fine-border: 1px solid rgb(212 212 210);
   --button-border: 1px solid #bd37b3;
@@ -93,8 +93,13 @@ select {
   box-shadow: 0.125px 1px 5px var(--brand-color) !important;
   padding-bottom: 1px;
 }
+.sale_price {
+  font-size: 15px;
+}
 .old_price {
   text-decoration: line-through;
+  font-size: 12px;
+  color: #757575;
 }
 /* header  */
 .header_full {

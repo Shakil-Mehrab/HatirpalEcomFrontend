@@ -48,17 +48,17 @@
   display: flex;
   align-items: center;
 }
-.order_status_ul .ul_li{
+.order_status_ul .ul_li {
   position: relative;
 }
-.status_title{
+.status_title {
   position: absolute;
   bottom: -14px;
   left: -10px;
 }
 .order_status {
   width: 25px;
-  height: 25PX;
+  height: 25px;
   border: 1px dashed green;
   border-radius: 50%;
   align-items: center;
@@ -67,27 +67,28 @@
   overflow: hidden;
   justify-content: center;
   font-size: 14px;
-  color: white;
+  /* color: white; */
 }
-.status_pending{
-  background:#F0F13E
+.status_pending {
+  background: #dcc945;
+  /* color: black !important; */
 }
-.status_confirmed{
-  background:#eef234
+.status_confirmed {
+  background: #d8de1a;
 }
-.status_processing{
-  background:#d9e900
+.status_processing {
+  background: #c2d004;
 }
-.status_picked{
-  background:#cce901
+.status_picked {
+  background: #9fb718;
 }
-.status_shipped{
-  background:#9ee11e
+.status_shipped {
+  background: #8ac518;
 }
-.status_complete{
-  background:#31aa01
+.status_complete {
+  background: #31aa01;
 }
-.status_failed{
+.status_failed {
   background: red;
 }
 .border_between_status {
