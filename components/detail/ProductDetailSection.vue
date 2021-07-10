@@ -93,7 +93,7 @@
             Color :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong
           >
           <ul>
-             <li class="mx-2 mb-2">
+            <li class="mx-2 mb-2">
               <input
                 type="radio"
                 class="btn-check"
@@ -111,33 +111,33 @@
               </label>
             </li>
             <template v-if="data.productImages.length">
-            <li
-              class="mx-2 mb-2"
-              v-for="color in data.productImages"
-              :key="color.id"
-            >
-              <input
-                type="radio"
-                class="btn-check"
-                :id="color.id"
-                :value="color.thumbnail"
-                v-model="form.image"
-              />
-              <label class="btn btn-outline-success" :for="color.id">
-                <img
-                  v-if="color.thumbnail"
-                  v-lazy="color.thumbnail"
-                  :alt="color.slug"
-                  width="100%"
+              <li
+                class="mx-2 mb-2"
+                v-for="color in data.productImages"
+                :key="color.id"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  :id="color.id"
+                  :value="color.thumbnail"
+                  v-model="form.image"
                 />
-              </label>
-            </li>
+                <label class="btn btn-outline-success" :for="color.id">
+                  <img
+                    v-if="color.thumbnail"
+                    v-lazy="color.thumbnail"
+                    :alt="color.slug"
+                    width="100%"
+                  />
+                </label>
+              </li>
             </template>
           </ul>
         </div>
         <div>
           <span class="help-block" v-if="requiredErrors">
-            <strong style="color: red" >{{
+            <strong style="color: red">{{
               requiredErrors["products.0.image"]
             }}</strong>
           </span>
@@ -151,7 +151,7 @@
         </h6>
       </div>
       <div class="my-2 quantity" style="display: flex">
-        <template v-if="data.stock_count<data.minimum_order">
+        <template v-if="data.stock_count < data.minimum_order">
           <h5 class="btn btn-danger btn-sm">This product is out of Stock</h5>
         </template>
         <template v-else>
@@ -218,6 +218,18 @@ export default {
     ...mapActions({
       store: "cart/store"
     }),
+    message() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Product Added Successfully!"
+      });
+    },
     add() {
       console.log(this.form);
       if (this.$auth.loggedIn) {
@@ -229,7 +241,7 @@ export default {
             quantity: this.form.quantity
           }
         ])
-          .then(response => console.log(response), (this.requiredErrors = ""))
+          .then(response => (this.requiredErrors = "",this.message()))
           .catch(error => (this.requiredErrors = error.response.data.errors));
       } else {
         this.loggedInfo = "Please Signin";
