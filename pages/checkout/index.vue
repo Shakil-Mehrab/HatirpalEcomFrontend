@@ -47,7 +47,12 @@
               form.shipping_method == 'Truck'
             "
           >
-            <h6>Extra Charge Required. <strong style="white-space: nowrap;">Contact Us: +8801400560808</strong></h6>
+            <h6>
+              Extra Charge Required.
+              <strong style="white-space: nowrap"
+                >Contact Us: +8801400560808</strong
+              >
+            </h6>
           </div>
         </div>
         <hr />
@@ -154,6 +159,18 @@ export default {
       getCart: "cart/getCart",
       // flash: "alert/flash"
     }),
+    message() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Something wrong!",
+      });
+    },
     async order() {
       this.submitting = true;
       console.log(this.form);
@@ -161,6 +178,7 @@ export default {
         await this.$axios.$post("api/order", {
           ...this.form,
         });
+        
         await this.getCart();
         this.$router.replace({
           name: "order",
@@ -168,6 +186,7 @@ export default {
       } catch (e) {
         // this.flash(e.response.data.message);
         this.errors = e.response.data.errors;
+        this.message();
       }
       this.submitting = false;
     },

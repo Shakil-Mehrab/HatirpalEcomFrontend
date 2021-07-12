@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td class="text-center">
-      <a href="#" @click.prevent="destroy(product.id)"
+      <a href="#" @click.prevent="deleteCart(product.id)"
         ><i class="fas fa-times"></i
       ></a>
     </td>
@@ -73,11 +73,31 @@ export default {
         });
       }
     },
-
+    message() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Product Revomes from Cart!",
+      });
+    },
     ...mapActions({
       destroy: "cart/destroy",
       update: "cart/update",
+      getCart: "cart/getCart",
     }),
+   async deleteCart(productId) {
+      try{
+        this.destroy(productId);
+        this.message();
+      }catch{
+        console.log('something prodblem')
+      }
+    },
     link(arg) {
       return {
         name: "product-slug",
