@@ -7,7 +7,6 @@
   --extra-violet: #26e0c6;
   --transition: all 0.5s ease-in-out;
   --fine-border: 1px solid rgb(212 212 210);
-  --button-border: 1px solid #bd37b3;
 
   --fds-gray-10: #ebedf0;
   --fds-gray-20: #dadde1;
@@ -55,8 +54,11 @@ a:hover {
   color: white;
   border-radius: 10px;
   padding: 0 8px;
-  border: var(--button-border);
   overflow: hidden;
+}
+.brand_border{
+  border: 1px solid var(--extra-violet);
+
 }
 .btn {
   box-shadow: unset !important;
@@ -72,7 +74,6 @@ select {
   color: white;
   border-radius: 5px;
   padding: 0 5px;
-  border: var(--button-border);
   overflow: hidden;
 }
 .brand_shadow {

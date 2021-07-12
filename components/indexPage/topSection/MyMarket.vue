@@ -6,7 +6,7 @@
       once: true
     }"
   >
-      <h6 class="trending_heading">My Market</h6>
+      <h6 class="trending_heading brand_border">My Market</h6>
     <div>
       <ul class="mymarket_ul">
         <li v-for="n in 2"

@@ -11,7 +11,7 @@
 
     <div class="left_category_heading">
       <h5>{{title}}</h5>
-      <a href="" class="brand_round_button brand_shadow">
+      <a href="" class="brand_round_button brand_shadow brand_border">
         See All Products
         <svg
           xmlns="http://www.w3.org/2000/svg"

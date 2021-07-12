@@ -6,7 +6,7 @@
       once: true
     }"
   >
-      <h6 class="trending_heading">Trending Consumer Electronics</h6>
+      <h6 class="trending_heading brand_border">Trending Consumer Electronics</h6>
     <div>
       <ul class="trending_ul">
         <li v-for="n in 2"
