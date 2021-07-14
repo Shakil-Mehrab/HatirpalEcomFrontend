@@ -1,12 +1,12 @@
 <template>
   <ul class="root_category_ul">
-    <li  class="root_category_li"
+    <li
+      class="root_category_li my-2"
       v-for="category in categories"
       :key="category.id"
-     
     >
-      <nuxt-link to="" exact target="_blank">
-        <h6>{{category.name}}</h6>
+      <nuxt-link :to="link(category)" exact target="_blank">
+        <h6>{{ category.name }}</h6>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -21,9 +21,8 @@
           />
         </svg>
       </nuxt-link>
-        
-        <SubCategory :category='category' />
-      
+
+      <SubCategory :category="category" />
     </li>
   </ul>
 </template>
@@ -31,7 +30,6 @@
 import SubCategory from "@/layouts/partials/header/lower/SubCategory";
 
 export default {
- 
   props: {
     categories: {
       required: true,
@@ -42,13 +40,14 @@ export default {
     SubCategory,
   },
   methods: {
-   
-    // link(arg) {
-    //   return {
-    //     name: "",
-    //     query: { categories: arg.slug },
-    //   };
-    // },
+    link(arg) {
+      return {
+        name: "category-slug",
+        params: {
+          slug: arg.slug,
+        },
+      };
+    },
   },
 };
 </script>

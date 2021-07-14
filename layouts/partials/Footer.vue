@@ -1,5 +1,8 @@
 <template>
   <footer class="bg-white">
+    <div class="go_to_top">
+      <a href="#"> Go to Top</a>
+    </div>
     <div class="container">
       <div class="row py-2">
         <div class="col-md-6 company_name" >
