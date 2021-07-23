@@ -1,54 +1,59 @@
 <template>
   <fragment>
-    <div class="row" v-for="n in 5" :key="n">
-      <div class="col-md-4">
-        <img
-          src="https://m.media-amazon.com/images/I/81eRAX3sB6L._AC_UY218_.jpg"
-          alt=""
-          width="100%"
-        />
-        <!-- <router-link :to="link(product)" exact>
+    <template v-for="(product, index) in products">
+    <div class="row my-2" :key="index">
+      <div class="col-md-4" >
+      
+        <router-link :to="link(product)">
           <img
             v-if="product.thumbnail"
             v-lazy="product.thumbnail"
             :alt="product.name"
-            class="w-full"
+            width="100%"
           />
-        </router-link> -->
+        </router-link>
       </div>
       <div class="col-md-8">
         <h5>
-          <router-link to="" exact
-            >this is our latest brand product</router-link
-          >
+          <router-link :to="link(product)" exact>{{
+            product.full_name
+          }}</router-link>
         </h5>
-        <span>
+        <div>
           <a href="" class="text-xs">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i> </a
-          ><br />
-        </span>
-        <p class="text-xs sm:text-sm">Fashion</p>
-        <p class="text-xs sm:text-sm">My One</p>
+            <i class="fas fa-star"></i>
+          </a>
+        </div>
+        <div>
+          <span><strong>Price : </strong>{{ product.sale_price }} BDT</span>
+          <span class="old_price">{{ product.old_price }} BDT</span>
+        </div>
+        <div><strong>Brand : </strong>{{ product.brand }}</div>
+        <div><strong>Unit : </strong>{{ product.unit }}</div>
+        <div v-if="product.waranty">
+          <strong>Waranty : </strong>{{ product.waranty }}
+        </div>
       </div>
     </div>
+    </template>
   </fragment>
 </template>
 <script>
 export default {
   props: {
-    // products: {
-    //   required: false,
-    //   type: Array
-    // }
+    products: {
+      required: true,
+      type: Array,
+    },
   },
   methods: {
     link(arg) {
       return {
-        name: "products-slug",
+        name: "product-slug",
         params: {
           slug: arg.slug,
         },

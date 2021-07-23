@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 const env = require("dotenv").config();
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -78,5 +79,31 @@ export default {
     credentials:true
   },
 
-  build: {}
+  build: {
+    plugins: [
+        new webpack.ProvidePlugin({
+            // '$': 'jquery',
+            '_': 'lodash'
+                // ...etc.
+        })
+    ],
+
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {
+        // Run ESLint on save
+        if (ctx.isDev && ctx.isClient) {
+            config.module.rules.push({
+                enforce: 'pre',
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                exclude: /(node_modules)/,
+                options: {
+                    fix: true
+                }
+            })
+        }
+    }
+}
 };

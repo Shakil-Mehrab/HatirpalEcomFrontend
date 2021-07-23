@@ -5,7 +5,10 @@
       v-for="category in categories"
       :key="category.id"
     >
-      <nuxt-link :to="link(category)" exact target="_blank">
+      <nuxt-link
+        :to="{ name: 'product', query: { categories: category.slug } }"
+        exacttarget="_blank"
+      >
         <h6>{{ category.name }}</h6>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,16 +42,14 @@ export default {
   components: {
     SubCategory,
   },
-  methods: {
-    link(arg) {
-      return {
-        name: "category-slug",
-        params: {
-          slug: arg.slug,
-        },
-      };
-    },
-  },
+  // methods: {
+  //   link(arg) {
+  //     return {
+  //       name: "product",
+  //      query: { category: children.slug } }
+  //
+  //   },
+  // },
 };
 </script>
 01741606526

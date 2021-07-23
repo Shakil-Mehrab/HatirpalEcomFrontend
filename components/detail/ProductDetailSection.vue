@@ -2,7 +2,7 @@
   <div>
     <form action="#" @submit.prevent="add">
       <div></div>
-      <h3>{{ data.name }}</h3>
+      <h3>{{ data.full_name }}</h3>
       <div style="color: red">{{ requiredErrors }}</div>
       <!-- {{ data }} -->
       <div style="color: orange">
