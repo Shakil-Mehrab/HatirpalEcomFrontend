@@ -2,11 +2,15 @@
   <div class="container mx-auto">
     <div class="row bg-white">
       <h6 class="mt-2"><strong>Cart</strong></h6>
-      <Progressbar nameOfPage="cart" v-if="products.length"/>
-      <CartSumury v-if="products.length" />
-      <div class="text-center my-4" v-else>
-        <h6>Your Cart is Empty</h6>
-      </div>
+      <Progressbar nameOfPage="cart" v-if="!empty" />
+      <template v-if="!empty">
+        <CartSumury />
+      </template>
+      <template v-else>
+        <div class="text-center my-4">
+          <h6>Your Cart is Empty</h6>
+        </div>
+      </template>
       <div class="mb-4 shopping_checkout">
         <nuxt-link :to="{ name: 'index' }" v-if="!empty" class="brand_button"
           >Continue Shopping</nuxt-link
@@ -33,7 +37,6 @@ export default {
   computed: {
     ...mapGetters({
       empty: "cart/empty",
-      products: "cart/products",
     }),
   },
 };

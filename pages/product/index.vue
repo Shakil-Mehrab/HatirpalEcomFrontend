@@ -3,7 +3,7 @@
     <div class="row bg-white py-2">
       <p class="my-2">Electronics > Television & Video> Television</p>
       <div class="col-sm-3 col-4">
-        <LeftFilterSection />
+        <LeftFilterSection :categories="treeCategories"/>
       </div>
 
       <div class="col-sm-9 col-8 category_right">
@@ -30,6 +30,7 @@
 import LeftFilterSection from "@/components/category/LeftFilterSection";
 import RightListSection from "@/components/category/RightListSection";
 import Pagination from "@/components/category/Pagination";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -46,16 +47,19 @@ export default {
   
   watch: {
     "$route.query"(query) {
-      console.log('watch')
       this.getNews(query);
     },
+  },
+  computed: {
+    ...mapGetters({
+        treeCategories: "treeCategories"
+    }),
   },
   //  mounted () {
   //   document.getElementById('app').appendChild(this.$el)
   // },
   methods: {
     async getNews(query = this.$route.query) {
-      console.log('get News')
       await this.$axios.$get(`api/product?per-page=8`, {
           params: {
             page:query.page,

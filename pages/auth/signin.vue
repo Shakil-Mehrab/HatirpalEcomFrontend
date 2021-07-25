@@ -43,6 +43,14 @@
               type="submit"
               class="form-control btn btn-success"
               value="Login"
+              v-if="!isloading"
+            />
+             <input
+              type="submit"
+              class="form-control btn btn-success"
+              value="Please wait..."
+              disabled
+              v-else
             />
           </div>
           <div class="col-md-12 already_have_account">
@@ -59,6 +67,7 @@
 export default {
   data() {
     return {
+      isloading:false,
       loginerror: "",
       form: {
         email: "",
@@ -70,6 +79,7 @@ export default {
   methods: {
     async signin() {
       try {
+        this.isloading=true
         await this.$auth.loginWith("laravelSanctum", {
           data: this.form,
         });
@@ -82,6 +92,7 @@ export default {
           name: "index",
         });
       } catch (e) {
+        this.isloading=false
         this.loginerror = e.response.data.errors;
       }
     },

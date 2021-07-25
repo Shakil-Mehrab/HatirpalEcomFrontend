@@ -145,8 +145,8 @@
       </div>
       <div>
         <h6>
-          <a href="" style="color: red"
-            ><strong>{{ loggedInfo }}</strong></a
+          <nuxt-link :to="{ name: 'auth-signin' }" style="color: red"
+            ><strong>{{ loggedInfo }}</strong></nuxt-link
           >
         </h6>
       </div>

@@ -15,23 +15,20 @@
           </thead>
           <tbody>
             <!-- {{products}} -->
-           <CartProductVariation 
-           v-for="product in products" 
-           :key="product.id" 
-           :product="product"/> 
+            <template v-for="(product, index) in products">
+              <CartProductVariation :key="index" :product="product" />
+            </template>
           </tbody>
         </table>
       </div>
     </div>
     <div class="col-md-4 offset-md-8">
-      <div
-        class="my-2"
-      >
+      <div class="my-2">
         <table class="table table-bordered">
           <tbody>
             <tr>
               <td class="text-center">Sub Total</td>
-              <td class="text-center">{{subtotal}}</td>
+              <td class="text-center">{{ subtotal }}</td>
             </tr>
             <!-- <tr>
               <td class="text-center">Tax</td>
@@ -49,14 +46,15 @@
   </fragment>
 </template>
 <script>
-import {mapGetters} from 'vuex'
-export default({
-  computed:{
+import { mapGetters } from "vuex";
+export default {
+ 
+  computed: {
     ...mapGetters({
-      products:'cart/products',
-      subtotal:'cart/subtotal',
-      total:'cart/total'
-    })
-  }
-})
+      products: "cart/products",
+      subtotal: "cart/subtotal",
+      total: "cart/total",
+    }),
+  },
+};
 </script>

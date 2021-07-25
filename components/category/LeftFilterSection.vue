@@ -1,6 +1,14 @@
 <template>
   <div>
-    
+    <div class="mt-4">
+      <h6 class="mb-2"><strong>Choose Category</strong></h6>
+      <div v-for="category in categories" :key="category.id">
+        <input type="checkbox" v-model='selected_checkboxes' :value="category.slug" @change="categoryFiltering"><a href="#"> {{ category.name }}</a>
+         <div v-for="cat in category.children" :key="cat.id">
+        <input type="checkbox" v-model='selected_checkboxes' :value="cat.slug" @change="categoryFiltering"><a href="#"> {{ cat.name }}</a>
+      </div>
+      </div>
+    </div>
     <div class="form-group">
       <label class="form-label">Real Time Search</label>
       <input
@@ -48,16 +56,16 @@
     </div>
     <div class="mt-4">
       <h6><strong>Featured Brand</strong></h6>
-      <input type="checkbox" /><a href=""> TCL</a
-      ><br />
-      <input type="checkbox" /><a href=""> LG</a
-      ><br />
+      <input type="checkbox" /><a href=""> TCL</a><br />
+      <input type="checkbox" /><a href=""> LG</a><br />
       <input type="checkbox" /><a href=""> SAMSANG</a>
     </div>
     <div class="mt-4">
-      <h6><strong>Price : {{ form.price }}</strong></h6>
+      <h6>
+        <strong>Price : {{ form.price }}</strong>
+      </h6>
       <input
-      style="width: 100%;"
+        style="width: 100%"
         type="range"
         min="500"
         max="10000"
@@ -73,15 +81,29 @@
 export default {
   data() {
     return {
+      selected_checkboxes: [],
       form: {
-        price: ""
-      }
+        price: "",
+      },
     };
+  },
+  props: {
+    categories: {
+      required: true,
+      type: Array,
+    },
   },
   methods: {
     prouctPrice() {
       console.log(this.form.price);
+    },
+    async categoryFiltering(){
+      await this.$router
+        .replace({
+          query: Object.assign({}, this.$route.query, { categories: [this.selected_checkboxes] })
+        })
+        .catch(() => {})
     }
-  }
+  },
 };
 </script>

@@ -111,7 +111,7 @@ export default {
 
   methods: {
     async switched(page) {
-      console.log(page);
+      // console.log(page);
       if (this.pageIsOutOfBounds(page)) {
         return;
       }
