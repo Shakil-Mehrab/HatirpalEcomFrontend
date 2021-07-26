@@ -104,41 +104,12 @@
             <span class="top_right_option">Cart</span>
             <span class="top_right_option">({{ cartCount }})</span>
           </nuxt-link>
-          <div class="header_cart_detail shadow-sm">
+          <div class="header_cart_detail shadow-sm" v-if="products.length">
             <div class="com-md-12">
               <h6 class="text-center cart_heading">Your Cart</h6>
-              <div v-for="n in 5" :key="n">
-                <div class="text-center">
-                  <img src="images/default/nature.jpeg" alt="" width="50%"/>
-                </div>
-                <h6 class="mt-2 text-center">This is test product</h6>
-                <ul class="my-2">
-                  <li>
-                    <input 
-                    class="form-control"
-                      type="number"
-                      min="33"
-                      step="33"
-                      v-model="quantity"
-                    />
-                  </li>
-                  <li class="mx-2">
-                    <select v-model="size_id" @change.prevent="size()" class="form-control">
-                      <option value="">Select One</option>
-                      <option
-                        :value="1"
-                        v-for="size in 5"
-                        :key="size.id"
-                      >
-                        S
-                      </option>
-                    </select>
-                  </li>
-                  <li class="mx-2">
-                   Price: 1200 TK
-                  </li>
-                </ul>
-              </div>
+              <template v-for="(product, index) in products">
+                <HeaderCart :key="index" :product="product" />
+              </template>
             </div>
           </div>
         </li>
@@ -148,20 +119,23 @@
 </template>
 <script>
 import SearchBar from "@/layouts/partials/header/top/SearchBar";
+import HeaderCart from "@/layouts/partials/header/top/HeaderCart";
 import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-        quantity: "33",
-        size_id: "1",
+      quantity: "33",
+      size_id: "1",
     };
   },
   components: {
     SearchBar,
+    HeaderCart,
   },
   computed: {
     ...mapGetters({
       cartCount: "cart/count",
+      products: "cart/products",
     }),
   },
 };

@@ -1,12 +1,50 @@
 <template>
   <div>
-    <div class="mt-4">
+
+    <div class="mt-4 category_filter">
       <h6 class="mb-2"><strong>Choose Category</strong></h6>
       <div v-for="category in categories" :key="category.id">
-        <input type="checkbox" v-model='selected_checkboxes' :value="category.slug" @change="categoryFiltering"><a href="#"> {{ category.name }}</a>
-         <div v-for="cat in category.children" :key="cat.id">
-        <input type="checkbox" v-model='selected_checkboxes' :value="cat.slug" @change="categoryFiltering"><a href="#"> {{ cat.name }}</a>
+        <input
+          type="checkbox"
+          v-model="selected_checkboxes"
+          :value="category.slug"
+          @change="categoryFiltering"
+        /><a href="#"> {{ category.name }}</a>
+        <div v-for="cat in category.children" :key="cat.id">
+          <input
+            type="checkbox"
+            v-model="selected_checkboxes"
+            :value="cat.slug"
+            @change="categoryFiltering"
+          /><a href="#"> {{ cat.name }}</a>
+        </div>
       </div>
+    </div>
+      <div class="mt-4 price_filter">
+      <h6>
+        <strong>Price : {{ lower_price + " to " + upper_price }}</strong>
+      </h6>
+      <div class="price_range_div">
+        <div>
+          <label for="">Minimum</label>
+          <input
+            type="range"
+            min="0"
+            :max="upper_price"
+            v-model="lower_price"
+            @change="prouctPrice()"
+          />
+        </div>
+        <div>
+          <label for="">Maximum</label>
+          <input
+            type="range"
+            min="0"
+            max="100000"
+            v-model="upper_price"
+            @change="prouctPrice()"
+          />
+        </div>
       </div>
     </div>
     <div class="form-group">
@@ -15,6 +53,7 @@
         type="text"
         placeholder="Searh Your product"
         class="form-control"
+        @keyup="search"
       />
     </div>
     <div class="mt-4">
@@ -60,31 +99,16 @@
       <input type="checkbox" /><a href=""> LG</a><br />
       <input type="checkbox" /><a href=""> SAMSANG</a>
     </div>
-    <div class="mt-4">
-      <h6>
-        <strong>Price : {{range_minimum+' to '+price }}</strong>
-      </h6>
-      <input
-        style="width: 100%"
-        type="range"
-        :min="range_minimum"
-        max="10000"
-        name=""
-        id=""
-        v-model="price"
-        @change="prouctPrice()"
-      />
-    </div>
+  
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      range_minimum:500,
       selected_checkboxes: [],
-      price: "",
-      price_array:[]
+      upper_price: 0,
+      lower_price: 0,
     };
   },
   props: {
@@ -93,22 +117,40 @@ export default {
       type: Array,
     },
   },
-  methods: {
-    async prouctPrice() {
-      this.price_array=[this.range_minimum,this.price];
-      await this.$router
-        .replace({
-          query: Object.assign({}, this.$route.query, { price: this.price_array })
-        })
-        .catch(() => {})
+  computed: {
+    arrayOfprice() {
+      let price_array = [this.lower_price,this.upper_price];
+      return price_array;
     },
-    async categoryFiltering(){
+  },
+  methods: {
+    async search(e){
+       await this.$router
+        .replace({
+          query: Object.assign({}, this.$route.query, {
+            search: e.target.value,
+          }),
+        })
+        .catch(() => {});
+    },
+    async prouctPrice() {
       await this.$router
         .replace({
-          query: Object.assign({}, this.$route.query, { categories: [this.selected_checkboxes] })
+          query: Object.assign({}, this.$route.query, {
+            price: [this.arrayOfprice],
+          }),
         })
-        .catch(() => {})
-    }
+        .catch(() => {});
+    },
+    async categoryFiltering() {
+      await this.$router
+        .replace({
+          query: Object.assign({}, this.$route.query, {
+            categories: [this.selected_checkboxes],
+          }),
+        })
+        .catch(() => {});
+    },
   },
 };
 </script>

@@ -1,52 +1,58 @@
 <template>
-  <tr>
-    <td class="text-center">
-      <a href="#" @click.prevent="deleteCart(product.cart_id)"
-        ><i class="fas fa-times"></i
-      ></a>
-    </td>
-    <td class="text-center">
+  <div class="mt-2">
+    <div class="text-center">
       <img
         v-if="product.thumbnail"
         v-lazy="product.thumbnail"
         :alt="product.name"
-        width="50px"
+        width="50%"
       />
-    </td>
-    <td class="text-center">
-      <h6>
-        <nuxt-link :to="link(product)">{{ product.name }}</nuxt-link>
-      </h6>
-    </td>
+    </div>
+    <h6 class="mt-2 text-center">
+      {{ product.full_name }}
+    </h6>
 
-    <td class="text-center">
-      <select v-model="size_id" @change.prevent="size()">
-        <option value="">Select One</option>
-        <option :value="size.id" v-for="size in product.sizes" :key="size.id">
-          <!-- :selected="size.id == product.size_id" -->
-
-          {{ size.size }}
-        </option>
-      </select>
-    </td>
-    <td class="text-center">
-      <input
-        type="number"
-        :min="product.minimum_order"
-        :step="product.minimum_order"
-        v-model="quantity"
-      />
-    </td>
-    <td class="text-center">{{ product.total }}</td>
-  </tr>
+    <ul class="my-2">
+      <li>
+        <a class="remove mx-1" href="#" @click.prevent="deleteCart(product.cart_id)"
+          ><i class="fas fa-times"></i> Remove
+        </a>
+      </li>
+      <li>
+        <input
+          class="cart_qty_ipnut"
+          type="number"
+          :min="product.minimum_order"
+          :step="product.minimum_order"
+          v-model="quantity"
+        />
+      </li>
+      <li class="mx-2">
+        <select v-model="size_id" @change.prevent="size()">
+          <option value="">Select One</option>
+          <option :value="size.id" v-for="size in product.sizes" :key="size.id">
+            {{ size.size }}
+          </option>
+        </select>
+      </li>
+      <li class="mx-2">Price: {{ product.total }} BDT</li>
+    </ul>
+  </div>
 </template>
 <script>
 import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
       size_id: this.product.size_id,
     };
+  },
+  props: {
+    product: {
+      required: true,
+      type: Object,
+    },
   },
   computed: {
     quantity: {
@@ -55,18 +61,11 @@ export default {
       },
       set(quantity) {
         this.update({
-         
           cartId: this.product.cart_id,
           size_id: this.product.size_id,
           quantity,
         });
       },
-    },
-  },
-  props: {
-    product: {
-      required: true,
-      type: Object,
     },
   },
   methods: {

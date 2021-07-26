@@ -7,8 +7,8 @@
       </div>
 
       <div class="col-sm-9 col-8 category_right">
-        {{ meta }}
-        {{ products }}
+        <!-- {{ meta }}
+        {{ products }} -->
 
         <template v-if="products.length">
           <RightListSection :products="products" :meta="meta" />
@@ -47,7 +47,7 @@ export default {
   
   watch: {
     "$route.query"(query) {
-      this.getNews(query);
+      this.getProduct(query);
     },
   },
   computed: {
@@ -59,7 +59,7 @@ export default {
   //   document.getElementById('app').appendChild(this.$el)
   // },
   methods: {
-    async getNews(query = this.$route.query) {
+    async getProduct(query = this.$route.query) {
       await this.$axios.$get(`api/product?per-page=8`, {
           params: {
             page:query.page,

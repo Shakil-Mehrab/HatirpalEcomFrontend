@@ -138,7 +138,9 @@
   width: 100%;
 }
 .header_cart_detail ul li input,
-.header_cart_detail ul li select {
+.header_cart_detail ul li select,
+.header_cart_detail .remove {
   padding-top: 0px;
   padding-bottom: 0px;
+  width: 100%;
 }

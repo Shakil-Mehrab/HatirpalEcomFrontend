@@ -75,8 +75,8 @@ export const actions={
     let response= await this.$axios.$delete(`api/cart/${productId}`);
     dispatch('getCart')
   },
-  async update({ dispatch },{productId,size_id,quantity}){
-    await this.$axios.$patch(`api/cart/${productId}`,{
+  async update({ dispatch },{cartId,size_id,quantity}){
+    await this.$axios.$patch(`api/cart/${cartId}`,{
       quantity,size_id
     });
     dispatch('getCart')

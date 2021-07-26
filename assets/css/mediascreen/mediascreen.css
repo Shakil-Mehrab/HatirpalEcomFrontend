@@ -75,4 +75,7 @@
   .top_header_right {
     font-size: 10px;
   }
+  .price_range_div {
+    display: inherit;
+  }
 }

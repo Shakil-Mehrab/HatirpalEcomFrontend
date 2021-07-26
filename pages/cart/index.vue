@@ -12,10 +12,10 @@
         </div>
       </template>
       <div class="mb-4 shopping_checkout">
-        <nuxt-link :to="{ name: 'index' }" v-if="!empty" class="brand_button"
+        <nuxt-link :to="{ name: 'index' }" v-if="!empty" class="brand_button p-1"
           >Continue Shopping</nuxt-link
         >
-        <nuxt-link :to="{ name: 'checkout' }" v-if="!empty" class="brand_button"
+        <nuxt-link :to="{ name: 'checkout' }" v-if="!empty" class="brand_button p-1"
           >Checkout</nuxt-link
         >
       </div>
