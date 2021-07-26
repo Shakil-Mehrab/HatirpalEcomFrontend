@@ -14,7 +14,7 @@
           <RightListSection :products="products" :meta="meta" />
           <div class="row">
             <div class="col-md-12 text-center">
-              <Pagination :meta="meta" />
+              <Pagination :meta="meta" v-if="meta.last_page>1"/>
             </div>
           </div>
         </template>

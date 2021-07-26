@@ -62,16 +62,16 @@
     </div>
     <div class="mt-4">
       <h6>
-        <strong>Price : {{ form.price }}</strong>
+        <strong>Price : {{range_minimum+' to '+price }}</strong>
       </h6>
       <input
         style="width: 100%"
         type="range"
-        min="500"
+        :min="range_minimum"
         max="10000"
         name=""
         id=""
-        v-model="form.price"
+        v-model="price"
         @change="prouctPrice()"
       />
     </div>
@@ -81,10 +81,10 @@
 export default {
   data() {
     return {
+      range_minimum:500,
       selected_checkboxes: [],
-      form: {
-        price: "",
-      },
+      price: "",
+      price_array:[]
     };
   },
   props: {
@@ -94,8 +94,13 @@ export default {
     },
   },
   methods: {
-    prouctPrice() {
-      console.log(this.form.price);
+    async prouctPrice() {
+      this.price_array=[this.range_minimum,this.price];
+      await this.$router
+        .replace({
+          query: Object.assign({}, this.$route.query, { price: this.price_array })
+        })
+        .catch(() => {})
     },
     async categoryFiltering(){
       await this.$router
