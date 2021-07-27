@@ -17,11 +17,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li><strong>Quantity #</strong> 30 peice</li>
+                    <!-- <li><strong>Quantity #</strong> 30 peice</li> -->
                 </ul>
             </div>
              <div class="col-md-6">
-                Pay with this
+                 <a class="btn btn-sm btn-primary" href="https://payment.smanager.xyz/@Hatirpal?fbclid=IwAR28Ml1IsX-9L0mvVIxYZi1HjA7g-WgfcqT3U4PfhU7Q3oI_hCVJZdD3KVI">Pay Now</a>
+                
             </div>
         </div>
     </div>

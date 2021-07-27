@@ -3,8 +3,8 @@
     <div class="row bg-white my-3">
       <h6 class="mt-2"><strong>Order</strong></h6>
       <div class="col-md-12 order">
-        {{orders}}
-        <table class="table table-hover table-bordered" >
+        <!-- {{orders}} -->
+        <table class="table table-hover table-bordered" v-if="orders.length">
           <!-- v-if="orders.length" -->
           <thead>
             <tr>
@@ -28,7 +28,7 @@
             />
           </tbody>
         </table>
-        <div class="text-center mb-4">
+        <div class="text-center mb-4" v-else>
           <h6>No Order</h6>
         </div>
       </div>
