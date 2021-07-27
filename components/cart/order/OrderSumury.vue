@@ -38,6 +38,7 @@
       </td>
     </tr>
     <Status :order="order" />
+    <br>  <br>  <br>  <br>
   </fragment>
 </template>
 <script>

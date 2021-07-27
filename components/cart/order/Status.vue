@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="mb-4">
     <td colspan="9" class="px-4">
       <ul class="my-2 order_status_ul">
         <li class="ul_li">

@@ -25,11 +25,19 @@ footer {
 }
 .company_name {
   color: var(--brand-color);
+  font-size: 30px;
 }
 .social_icon {
   font-size: 30px;
   text-align: right;
   color: var(--brand-color);
+}
+.social_icon a {
+  color: var(--brand-color);
+  font-size: 24px;
+}
+.social_icon a:hover {
+  color: var(--extra-violet);
 }
 /* about us  */
 .owner_img {

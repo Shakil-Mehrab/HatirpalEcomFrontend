@@ -5,14 +5,14 @@
     </div>
     <div class="container">
       <div class="row py-2">
-        <div class="col-md-6 company_name" >
-          <h1 class="">Hatirpal.com</h1>
+        <div class="col-6 company_name my-2">
+         Hatirpal.com
         </div>
-        <div class="col-md-6 social_icon mt-2">
-         <i class="fab fa-facebook-square"></i>
-         <i class="fab fa-twitter-square"></i>
-         <i class="fab fa-instagram-square"></i>
-         <i class="fab fa-youtube-square"></i>
+        <div class="col-6 social_icon my-2">
+        <a href=""><i class="fab fa-facebook-square"></i></a>
+         <a href=""><i class="fab fa-twitter-square"></i></a>
+         <a href=""><i class="fab fa-instagram-square"></i></a>
+         <a href=""><i class="fab fa-youtube-square"></i></a>
         </div>
       </div>
       <div class="row">
@@ -26,7 +26,7 @@
                 <nuxt-link :to="{name:'contact'}">Contact Us</nuxt-link>
               </li>
                 <li>
-                <nuxt-link :to="{name:'condition'}">Terms and Condition</nuxt-link>
+                <nuxt-link class="brand_color" :to="{name:'condition'}">Terms and Condition</nuxt-link>
               </li>
                <li>
                 <nuxt-link :to="{name:'howto'}">How to Order</nuxt-link>
@@ -68,8 +68,8 @@
                 <a href="#" class="text-xs">124 Cahudhuripara, Malibag,Dhaka</a>
               </li>
                <li>
-                <a href="#" class="text-xs">01615336636</a>, 
-                <a href="#" class="text-xs">01615336636</a>
+                <a href="#" class="text-xs brand_color">01615336636</a>, 
+                <a href="#" class="text-xs brand_color">01615336636</a>
 
                 
               </li>

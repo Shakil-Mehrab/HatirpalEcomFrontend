@@ -78,4 +78,7 @@
   .price_range_div {
     display: inherit;
   }
+  .auth_user {
+    display: none;
+  }
 }
