@@ -144,3 +144,9 @@
   padding-bottom: 0px;
   width: 100%;
 }
+.go_to_cart{
+  text-align: right;
+}
+.go_to_cart a{
+  color: white !important;
+}

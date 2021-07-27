@@ -110,6 +110,9 @@
               <template v-for="(product, index) in products">
                 <HeaderCart :key="index" :product="product" />
               </template>
+              <div>
+                <div class="go_to_cart"><nuxt-link :to="{name:'cart'}" class="btn btn-sm btn-primary" href=""><h6>Go to Cart</h6></nuxt-link></div>
+              </div>
             </div>
           </div>
         </li>
