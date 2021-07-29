@@ -112,7 +112,6 @@ export default {
       errors: "",
       form: {
         address_id: null,
-        payment_method: "Hatirpal Pay",
         shipping_method: "",
       },
     };
@@ -173,7 +172,7 @@ export default {
     },
     async order() {
       this.submitting = true;
-      console.log(this.form);
+      // console.log(this.form);
       try {
         await this.$axios.$post("api/order", {
           ...this.form,
