@@ -252,7 +252,7 @@ export default {
         );
         this.delivary_places = response.data;
         this.form.expense = response.meta.expense;
-
+console.log(response.meta.expense)
       } else {
         this.delivary_places = [];
       }
