@@ -1,7 +1,7 @@
 /* global  */
 @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 :root {
-  --link-color: #666;
+  --link-color: rgb(50, 52, 63);
   --link-violet: #003366;
   --brand-color: #003366;
   --extra-violet: #26e0c6;
@@ -21,7 +21,7 @@ body {
   background-color: var(--fds-gray-25);
   font-size: 14px;
   line-height: 1.28571;
-  color: #333;
+  color: rgb(46, 43, 43);
   margin: 0px;
   margin: 0px;
   padding: 0px;
@@ -48,6 +48,7 @@ a {
   text-decoration: none;
   color: var(--link-color);
   transition: var(--transition);
+  font-size: 16px;
 }
 a:hover {
   color: var(--link-violet);
@@ -106,6 +107,9 @@ select {
   text-decoration: line-through;
   font-size: 12px;
   color: #757575;
+}
+.brand_color {
+  color: var(--brand-color);
 }
 /* header  */
 .header_full {

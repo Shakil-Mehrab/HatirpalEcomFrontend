@@ -70,3 +70,6 @@
   color: var(--extra-hover-color);
   font-size: 15px;
 }
+.auth_user img {
+  border-radius: 10px;
+}
