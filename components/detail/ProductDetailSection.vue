@@ -6,12 +6,14 @@
       <div style="color: red">{{ requiredErrors }}</div>
       <!-- {{ data }} -->
       <div style="color: orange">
-        <!-- <star-rating
-          :increment="0.5"
-          :star-size="20"
-          :read-only="true"
-          :rating="4.3"
-        /> -->
+        <!-- <client-only>
+          <star-rating
+            :increment="0.5"
+            :star-size="20"
+            :read-only="true"
+            :rating="4.3"
+          />
+        </client-only> -->
         <!-- <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -212,7 +214,7 @@ export default {
 
   components: {
     ProductBodyCertificketComment
-    // StarRating,
+    // StarRating
   },
   methods: {
     ...mapActions({
@@ -241,7 +243,7 @@ export default {
             quantity: this.form.quantity
           }
         ])
-          .then(response => (this.requiredErrors = "",this.message()))
+          .then(response => ((this.requiredErrors = ""), this.message()))
           .catch(error => (this.requiredErrors = error.response.data.errors));
       } else {
         this.loggedInfo = "Please Signin";

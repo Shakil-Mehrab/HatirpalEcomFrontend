@@ -1,18 +1,20 @@
 <template>
   <div>
     <div class="relative">
-      <zoom-on-hover
-        v-if="idOfImage.thumbnail"
-        :img-normal="idOfImage.thumbnail"
-        :img-zoom="idOfImage.thumbnail"
-        :scale="2.5"
-        :disabled="false"
-        @loaded="onload"
-        @resized="onresize"
-      >
-      </zoom-on-hover>
+      <client-only>
+        <zoom-on-hover
+          v-if="idOfImage.thumbnail"
+          :img-normal="idOfImage.thumbnail"
+          :img-zoom="idOfImage.thumbnail"
+          :scale="2.5"
+          :disabled="false"
+          @loaded="onload"
+          @resized="onresize"
+        >
+        </zoom-on-hover>
+      </client-only>
       <div class="" align="center" v-if="data.productImages.length">
-        <span class="">{{ serial }}/{{data.productImages.length}}</span>
+        <span class="">{{ serial }}/{{ data.productImages.length }}</span>
       </div>
     </div>
     <br />
@@ -24,9 +26,12 @@
           :loop="true"
           :navigationEnabled="true"
         >
-          <slide v-for="(productImage,index) in data.productImages" :key="index">
+          <slide
+            v-for="(productImage, index) in data.productImages"
+            :key="index"
+          >
             <div class="mx-1">
-              <a href="#" @mouseover="selectImage(productImage, index+1)">
+              <a href="#" @mouseover="selectImage(productImage, index + 1)">
                 <img :src="productImage.thumbnail" width="100%" alt="" />
               </a>
             </div>
@@ -50,20 +55,16 @@ export default {
   props: {
     data: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
     selectImage(img, serial) {
       this.idOfImage = img;
       this.serial = serial;
     },
-    onload() {
-
-    },
-     onresize() {
-
-    },
+    onload() {},
+    onresize() {},
   },
 };
 </script>
