@@ -6,14 +6,14 @@
       <div style="color: red">{{ requiredErrors }}</div>
       <!-- {{ data }} -->
       <div style="color: orange">
-        <!-- <client-only>
+        <client-only>
           <star-rating
             :increment="0.5"
             :star-size="20"
             :read-only="true"
             :rating="4.3"
           />
-        </client-only> -->
+        </client-only>
         <!-- <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -189,7 +189,6 @@
 <script>
 import { mapActions } from "vuex";
 import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertificketComment";
-// import StarRating from "vue-star-rating";
 export default {
   data() {
     return {
@@ -205,6 +204,7 @@ export default {
       }
     };
   },
+  mounted() {},
   props: {
     data: {
       required: true,
@@ -214,7 +214,6 @@ export default {
 
   components: {
     ProductBodyCertificketComment
-    // StarRating
   },
   methods: {
     ...mapActions({

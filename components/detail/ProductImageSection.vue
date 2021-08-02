@@ -39,9 +39,6 @@
         </carousel>
       </client-only>
     </div>
-    <!-- <div v-else class="text-center">
-      No variation
-    </div> -->
   </div>
 </template>
 <script>
@@ -49,14 +46,14 @@ export default {
   data() {
     return {
       idOfImage: this.data,
-      serial: 1,
+      serial: 1
     };
   },
   props: {
     data: {
       required: true,
-      type: Object,
-    },
+      type: Object
+    }
   },
   methods: {
     selectImage(img, serial) {
@@ -64,8 +61,8 @@ export default {
       this.serial = serial;
     },
     onload() {},
-    onresize() {},
-  },
+    onresize() {}
+  }
 };
 </script>
 <style>

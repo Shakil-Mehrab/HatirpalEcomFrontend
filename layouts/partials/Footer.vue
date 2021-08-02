@@ -6,74 +6,75 @@
     <div class="container">
       <div class="row py-2">
         <div class="col-6 company_name my-2">
-         Hatirpal.com
+          Hatirpal.com
         </div>
         <div class="col-6 social_icon my-2">
-        <a href=""><i class="fab fa-facebook-square"></i></a>
-         <a href=""><i class="fab fa-twitter-square"></i></a>
-         <a href=""><i class="fab fa-instagram-square"></i></a>
-         <a href=""><i class="fab fa-youtube-square"></i></a>
+          <a href=""><i class="fab fa-facebook-square"></i></a>
+          <a href=""><i class="fab fa-twitter-square"></i></a>
+          <a href=""><i class="fab fa-instagram-square"></i></a>
+          <a href=""><i class="fab fa-youtube-square"></i></a>
         </div>
       </div>
       <div class="row">
         <div class="col-md-3 col-sm-6 col-6">
-            <h5>Customer Service</h5>
-            <ul class="">
-               <li>
-                <nuxt-link :to="{name:'contact'}">Help Center</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link :to="{name:'contact'}">Contact Us</nuxt-link>
-              </li>
-                <li>
-                <nuxt-link class="brand_color" :to="{name:'condition'}">Terms and Condition</nuxt-link>
-              </li>
-               <li>
-                <nuxt-link :to="{name:'howto'}">How to Order</nuxt-link>
-              </li>
-               <li>
-                <nuxt-link :to="{name:'moneyback'}">Moneyback Guarantee</nuxt-link>
-              </li>
-              
-             
-              
-            </ul>
+          <h5>Customer Service</h5>
+          <ul class="">
+            <li>
+              <nuxt-link :to="{ name: 'contact' }">Help Center</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link :to="{ name: 'contact' }">Contact Us</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link class="brand_color" :to="{ name: 'condition' }"
+                >Terms and Condition</nuxt-link
+              >
+            </li>
+            <li>
+              <nuxt-link :to="{ name: 'howto' }">How to Order</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link :to="{ name: 'moneyback' }"
+                >Moneyback Guarantee</nuxt-link
+              >
+            </li>
+          </ul>
         </div>
         <div class="col-md-3 col-sm-6 col-6">
-            <h5>About Us</h5>
-            <ul class="">
-              <li>
-                <nuxt-link :to="{name:'about'}">About Hatirpal</nuxt-link>
-              </li>
-               <li>
-                <nuxt-link :to="{name:'auth-signin'}">Sign In</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link :to="{name:'auth-register'}">Sign Up</nuxt-link>
-              </li>
-            </ul>
+          <h5>About Us</h5>
+          <ul class="">
+            <li>
+              <nuxt-link :to="{ name: 'about' }">About Hatirpal</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link :to="{ name: 'auth-signin' }">Sign In</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link :to="{ name: 'auth-register' }">Sign Up</nuxt-link>
+            </li>
+          </ul>
         </div>
         <div class="col-md-3 col-sm-6 col-6">
-            <h5>Sale on Hatirpal</h5>
-            <ul class="">
-             <li>
-                <nuxt-link :to="{name:'auth-signin'}">Supplier Membership</nuxt-link>
-              </li>
-            </ul>
+          <h5>Sale on Hatirpal</h5>
+          <ul class="">
+            <li>
+              <nuxt-link :to="{ name: 'auth-signin' }"
+                >Supplier Membership</nuxt-link
+              >
+            </li>
+          </ul>
         </div>
         <div class="col-md-3 col-sm-6 col-6">
-            <h5>Address</h5>
-            <ul class="">
-              <li>
-                <a href="#" class="text-xs">124 Cahudhuripara, Malibag,Dhaka</a>
-              </li>
-               <li>
-                <a href="#" class="text-xs brand_color">01615336636</a>, 
-                <a href="#" class="text-xs brand_color">01615336636</a>
-
-                
-              </li>
-            </ul>
+          <h5>Address</h5>
+          <ul class="">
+            <li>
+              <a href="#" class="text-xs">124 Cahudhuripara, Malibag,Dhaka</a>
+            </li>
+            <li>
+              <a href="#" class="text-xs brand_color">01615336636</a>,
+              <a href="#" class="text-xs brand_color">01615336636</a>
+            </li>
+          </ul>
         </div>
       </div>
       <br />
@@ -82,5 +83,40 @@
       </div>
       <br />
     </div>
+    <div class="messenger">
+      <div
+        class="fb-messengermessageus"
+        messenger_app_id="451585265723432"
+        page_id="105488687708483"
+        color="blue"
+        size="standard"
+      ></div>
+    </div>
   </footer>
 </template>
+<script>
+export default {
+  mounted() {
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: "451585265723432",
+        xfbml: true,
+        version: "v2.8"
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  }
+};
+</script>
