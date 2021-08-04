@@ -189,6 +189,7 @@
 <script>
 import { mapActions } from "vuex";
 import ProductBodyCertificketComment from "@/components/detail/ProductBodyCertificketComment";
+// import StarRating from "vue-star-rating";
 export default {
   data() {
     return {
@@ -214,6 +215,7 @@ export default {
 
   components: {
     ProductBodyCertificketComment
+    // StarRating
   },
   methods: {
     ...mapActions({
