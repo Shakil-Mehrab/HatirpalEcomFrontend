@@ -115,11 +115,8 @@ export default {
           return;
         }
          this.$router.replace({
-          path: "/auth/login",
+          name: "index",
         });
-        // this.$router.replace({
-        //   name: "index",
-        // });
       } catch (e) {
         this.loginerror = e.response.data.errors;
         
