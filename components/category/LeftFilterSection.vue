@@ -1,26 +1,29 @@
 <template>
   <div>
-
     <div class="mt-4 category_filter">
       <h6 class="mb-2"><strong>Choose Category</strong></h6>
-      <div v-for="category in categories" :key="category.id">
-        <input
-          type="checkbox"
-          v-model="selected_checkboxes"
-          :value="category.slug"
-          @change="categoryFiltering"
-        /><a href="#"> {{ category.name }}</a>
-        <div v-for="cat in category.children" :key="cat.id">
+      <template v-for="(category, index) in categories">
+        <div :key="index">
           <input
             type="checkbox"
             v-model="selected_checkboxes"
-            :value="cat.slug"
+            :value="category.slug"
             @change="categoryFiltering"
-          /><a href="#"> {{ cat.name }}</a>
+          /><a href="#"> {{ category.name }}</a>
+          <template v-for="(cat, ind) in category.children">
+            <div :key="ind">
+              <input
+                type="checkbox"
+                v-model="selected_checkboxes"
+                :value="cat.slug"
+                @change="categoryFiltering"
+              /><a href="#"> {{ cat.name }}</a>
+            </div>
+          </template>
         </div>
-      </div>
+      </template>
     </div>
-      <div class="mt-4 price_filter">
+    <div class="mt-4 price_filter">
       <h6>
         <strong>Price : {{ lower_price + " to " + upper_price }}</strong>
       </h6>
@@ -99,37 +102,45 @@
       <input type="checkbox" /><a href=""> LG</a><br />
       <input type="checkbox" /><a href=""> SAMSANG</a>
     </div>
-  
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      selected_checkboxes: [],
+      selected_checkboxes: this.$route.query.categories
+        ? this.$route.query.categories.split(",")
+        : [],
       upper_price: 0,
-      lower_price: 0,
+      lower_price: 0
     };
   },
   props: {
     categories: {
       required: true,
-      type: Array,
-    },
+      type: Array
+    }
   },
   computed: {
     arrayOfprice() {
-      let price_array = [this.lower_price,this.upper_price];
+      let price_array = [this.lower_price, this.upper_price];
       return price_array;
     },
+    arrayOfCategories() {
+      // if (this.$route.query.categories) {
+      //   return "hi";
+      // }
+      let cat_array = this.$route.query.categories.split(",");
+      return cat_array;
+    }
   },
   methods: {
-    async search(e){
-       await this.$router
+    async search(e) {
+      await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            search: e.target.value,
-          }),
+            search: e.target.value
+          })
         })
         .catch(() => {});
     },
@@ -137,20 +148,21 @@ export default {
       await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            price: [this.arrayOfprice],
-          }),
+            price: [this.arrayOfprice]
+          })
         })
         .catch(() => {});
     },
     async categoryFiltering() {
+      let cat_array = this.selected_checkboxes.join(",");
       await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            categories: [this.selected_checkboxes],
-          }),
+            categories: cat_array
+          })
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>

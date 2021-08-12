@@ -2,7 +2,7 @@
   <div
     v-observe-visibility="{
       callback: showProductsNow,
-      once: true,
+      once: true
     }"
     class="col-md-12"
   >
@@ -14,12 +14,11 @@
             [350, 3],
             [768, 5],
             [992, 6],
-            [1200, perpageInLarge],
+            [1200, perpageInLarge]
           ]"
           :loop="true"
           :navigationEnabled="true"
         >
-   
           <slide v-for="data in datas" :key="data.id">
             <div class="slide_content hover_shadow">
               <nuxt-link :to="link(data)" exact>
@@ -31,12 +30,17 @@
                 />
               </nuxt-link>
               <div class="product_attribute my-2">
-                <nuxt-link :to="link(data)" exact v-if="data.name" ><h6 class="">{{data.name}}</h6></nuxt-link>
-                <p class="mt-2 mb-1" >
-                  <span v-if="data.sale_price">{{data.sale_price}} BDT</span>
-                  <span class="old_price" v-if="data.old_price">{{data.old_price}} BDT</span>
+                <nuxt-link :to="link(data)" exact v-if="data.name"
+                  ><h6 class="">{{ data.name }}</h6></nuxt-link
+                >
+                <p class="mt-2 mb-1">
+                  <span v-if="data.sale_price">{{ data.sale_price }} BDT</span>
+                  <span class="old_price" v-if="data.old_price"
+                    >{{ data.old_price }} BDT</span
+                  >
                 </p>
                 <!-- <p class="" v-if="data.short_description" v-html="data.short_description"></p> -->
+                <p>{{ data.categories }}</p>
               </div>
             </div>
           </slide>
@@ -58,30 +62,30 @@ export default {
   data() {
     return {
       isLoading: true,
-      datas: [],
+      datas: []
     };
   },
   props: {
     endpoints: {
       required: true,
       type: String,
-      default: "product?per-page=20",
+      default: "product?per-page=20"
     },
     short_des: {
       required: false,
       type: Boolean,
-      default: false,
+      default: false
     },
     perpageInLarge: {
       required: false,
       type: Number,
-      default: 8,
+      default: 8
     },
     skeleton: {
       required: false,
       type: Number,
-      default: 4,
-    },
+      default: 4
+    }
   },
   methods: {
     async showProductsNow(visible) {
@@ -101,11 +105,11 @@ export default {
       return {
         name: "product-slug",
         params: {
-          slug: arg.slug,
-        },
+          slug: arg.slug
+        }
       };
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

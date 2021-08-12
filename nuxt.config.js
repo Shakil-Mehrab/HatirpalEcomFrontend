@@ -40,6 +40,7 @@ export default {
         '@/plugins/VueContentPlaceholders',
         '@/plugins/VueSweetAlert',
 
+
         // '@/plugins/VueStarRating',
         // { src: "~/plugins/VueStarRating.js", mode: "client" },
     ],
@@ -80,6 +81,7 @@ export default {
     },
 
     build: {
+        vendor: ['vue-session'],
         plugins: [
             new webpack.ProvidePlugin({
                 // '$': 'jquery',

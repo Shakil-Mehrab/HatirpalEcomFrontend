@@ -1,11 +1,16 @@
 /* left side  */
+
 .price_range_div {
-  display: flex;
+    display: flex;
 }
+
 .price_range_div input {
-  width: 100%;
+    width: 100%;
 }
+
+
 /* right side  */
+
 .category_right {
-  border-left: 1px solid var(--fine-border);
+    border-left: 1px solid var(--fine-border);
 }

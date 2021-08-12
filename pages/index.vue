@@ -75,14 +75,14 @@ export default {
     // CategorySection,
     CategoryHeading,
     CategoryHeadingLeft,
-    SlideSectionOne,
+    SlideSectionOne
     // JustForYou,
     // SupplierRegion
   },
   computed: {
     ...mapGetters({
       // selectedCategories: "selectedCategories"
-    }),
+    })
   },
   async asyncData({ app }) {
     // let response = await app.$axios.$get("products");
@@ -90,6 +90,6 @@ export default {
     return {
       // products: response.data
     };
-  },
+  }
 };
 </script>
