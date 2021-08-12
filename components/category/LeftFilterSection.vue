@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="mt-4 category_filter">
       <h6 class="mb-2"><strong>Choose Category</strong></h6>
       <div v-for="category in categories" :key="category.id">
@@ -20,7 +19,7 @@
         </div>
       </div>
     </div>
-      <div class="mt-4 price_filter">
+    <div class="mt-4 price_filter">
       <h6>
         <strong>Price : {{ lower_price + " to " + upper_price }}</strong>
       </h6>
@@ -99,7 +98,6 @@
       <input type="checkbox" /><a href=""> LG</a><br />
       <input type="checkbox" /><a href=""> SAMSANG</a>
     </div>
-  
   </div>
 </template>
 <script>
@@ -109,27 +107,28 @@ export default {
       selected_checkboxes: [],
       upper_price: 0,
       lower_price: 0,
+      selectedCategory: null
     };
   },
   props: {
     categories: {
       required: true,
-      type: Array,
-    },
+      type: Array
+    }
   },
   computed: {
     arrayOfprice() {
-      let price_array = [this.lower_price,this.upper_price];
+      let price_array = [this.lower_price, this.upper_price];
       return price_array;
-    },
+    }
   },
   methods: {
-    async search(e){
-       await this.$router
+    async search(e) {
+      await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            search: e.target.value,
-          }),
+            search: e.target.value
+          })
         })
         .catch(() => {});
     },
@@ -137,20 +136,26 @@ export default {
       await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            price: [this.arrayOfprice],
-          }),
+            price: [this.arrayOfprice]
+          })
         })
         .catch(() => {});
+    },
+    selected_category() {
+      this.selected_checkboxes.join(",");
+
+      this.selectedCategory;
     },
     async categoryFiltering() {
+      let selected = this.selected_checkboxes.join(",");
       await this.$router
         .replace({
-          query: Object.assign({}, this.$route.query, {
-            categories: [this.selected_checkboxes],
-          }),
+          query: {
+            category: selected
+          }
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
