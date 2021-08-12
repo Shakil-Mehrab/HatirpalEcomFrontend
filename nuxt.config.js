@@ -42,7 +42,7 @@ export default {
 
 
         // '@/plugins/VueStarRating',
-        // { src: "~/plugins/VueStarRating.js", mode: "client" },
+        { src: "~/plugins/VueStarRating.js", mode: "client" },
     ],
 
     components: true,

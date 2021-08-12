@@ -1,6 +1,9 @@
 <template>
   <div>
+<<<<<<< HEAD
     <!-- nice lkjd saldk lkdjf sdlkfclk -->
+=======
+>>>>>>> a0084d036828e78292b9c8e00fa42438764970d4
     <div class="mt-4 category_filter">
       <h6 class="mb-2"><strong>Choose Category</strong></h6>
       <template v-for="(category, index) in categories">
@@ -113,7 +116,12 @@ export default {
         ? this.$route.query.categories.split(",")
         : [],
       upper_price: 0,
+<<<<<<< HEAD
       lower_price: 0
+=======
+      lower_price: 0,
+      selectedCategory: null
+>>>>>>> a0084d036828e78292b9c8e00fa42438764970d4
     };
   },
   props: {
@@ -126,6 +134,7 @@ export default {
     arrayOfprice() {
       let price_array = [this.lower_price, this.upper_price];
       return price_array;
+<<<<<<< HEAD
     },
     arrayOfCategories() {
       // if (this.$route.query.categories) {
@@ -133,6 +142,8 @@ export default {
       // }
       let cat_array = this.$route.query.categories.split(",");
       return cat_array;
+=======
+>>>>>>> a0084d036828e78292b9c8e00fa42438764970d4
     }
   },
   methods: {
@@ -154,13 +165,27 @@ export default {
         })
         .catch(() => {});
     },
+    selected_category() {
+      this.selected_checkboxes.join(",");
+
+      this.selectedCategory;
+    },
     async categoryFiltering() {
+<<<<<<< HEAD
       let cat_array = this.selected_checkboxes.join(",");
       await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
             categories: cat_array
           })
+=======
+      let selected = this.selected_checkboxes.join(",");
+      await this.$router
+        .replace({
+          query: {
+            category: selected
+          }
+>>>>>>> a0084d036828e78292b9c8e00fa42438764970d4
         })
         .catch(() => {});
     }
