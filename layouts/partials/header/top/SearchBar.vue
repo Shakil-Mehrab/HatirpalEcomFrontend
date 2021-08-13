@@ -1,9 +1,8 @@
 <template>
   <fragment>
-    <div
-      class="search_select_pre_div"
-    >
-        <select name="userType" id="userType">
+    <div class="search_select_pre_div">
+      <client-only>
+        <select name="user_type" id="user_type" v-model="form.user_type">
           <option value="1" class="whitespace-wrap">
             <span>Products</span>
             <svg
@@ -20,7 +19,7 @@
             </svg>
           </option>
           <option value="2">
-            Suppliers
+            <span>Products</span>
             <svg
               class="w-4 inline-block"
               xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +34,9 @@
             </svg>
           </option>
         </select>
+      </client-only>
     </div>
-    <input type="search" class="form-control" />
+    <input type="search" class="form-control" v-model="form.query" />
     <div class="search_icon_pre_div">
       <svg
         class="search_icon"
@@ -56,10 +56,14 @@
   </fragment>
 </template>
 <script>
-
 export default {
   data() {
-    return {};
-  },
+    return {
+      form: {
+        user_type: "",
+        query: ""
+      }
+    };
+  }
 };
 </script>

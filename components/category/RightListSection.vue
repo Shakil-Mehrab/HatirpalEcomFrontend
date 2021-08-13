@@ -1,5 +1,5 @@
 <template>
-  <fragment>
+  <div>
     <template v-for="(product, index) in products">
       <div class="row my-2" :key="index">
         <div class="col-md-4">
@@ -40,7 +40,7 @@
         </div>
       </div>
     </template>
-  </fragment>
+  </div>
 </template>
 <script>
 export default {

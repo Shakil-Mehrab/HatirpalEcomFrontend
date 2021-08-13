@@ -1,15 +1,15 @@
 <template>
   <fixed-header :threshold="100">
     <header class="bg-white shadow-sm navbar">
-        <div class="container-fluid">
-          <TopHeader />
-        </div>
-        <!-- <div class="container-fluid" >
+      <div class="container-fluid">
+        <TopHeader />
+      </div>
+      <!-- <div class="container-fluid" >
             <hr>
         </div> -->
-          <div class="container-fluid low_head_back_img">
-          <LowerHeader />
-        </div>
+      <div class="container-fluid low_head_back_img">
+        <LowerHeader />
+      </div>
     </header>
   </fixed-header>
 </template>
@@ -21,12 +21,12 @@ export default {
   components: {
     TopHeader,
     LowerHeader,
-    FixedHeader,
-  },
+    FixedHeader
+  }
 };
 </script>
 <style>
-.navbar{
+.navbar {
   padding-bottom: 0;
 }
 @media only screen and (min-width: 768px) {

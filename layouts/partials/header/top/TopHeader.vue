@@ -16,7 +16,11 @@
             v-if="$auth.loggedIn"
             class="auth_user"
           >
-            <img :src="$auth.user.data.thumbnail" :alt="$auth.user.data.name" width="20px">
+            <img
+              :src="$auth.user.data.thumbnail"
+              :alt="$auth.user.data.name"
+              width="20px"
+            />
             <span class="top_right_option">
               {{ $auth.user.data.name }}
             </span>
@@ -99,7 +103,14 @@
                 <HeaderCart :key="index" :product="product" />
               </template>
               <div>
-                <div class="go_to_cart"><nuxt-link :to="{name:'cart'}" class="btn btn-sm btn-primary" href=""><h6>Go to Cart</h6></nuxt-link></div>
+                <div class="go_to_cart">
+                  <nuxt-link
+                    :to="{ name: 'cart' }"
+                    class="btn btn-sm btn-primary"
+                    href=""
+                    ><h6>Go to Cart</h6></nuxt-link
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -116,18 +127,18 @@ export default {
   data() {
     return {
       quantity: "33",
-      size_id: "1",
+      size_id: "1"
     };
   },
   components: {
     SearchBar,
-    HeaderCart,
+    HeaderCart
   },
   computed: {
     ...mapGetters({
       cartCount: "cart/count",
-      products: "cart/products",
-    }),
-  },
+      products: "cart/products"
+    })
+  }
 };
 </script>

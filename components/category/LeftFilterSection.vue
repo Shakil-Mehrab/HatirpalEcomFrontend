@@ -121,19 +121,6 @@ export default {
       type: Array
     }
   },
-  computed: {
-    arrayOfprice() {
-      let price_array = [this.lower_price, this.upper_price];
-      return price_array;
-    },
-    arrayOfCategories() {
-      // if (this.$route.query.categories) {
-      //   return "hi";
-      // }
-      let cat_array = this.$route.query.categories.split(",");
-      return cat_array;
-    }
-  },
   methods: {
     async search(e) {
       await this.$router
@@ -145,10 +132,11 @@ export default {
         .catch(() => {});
     },
     async prouctPrice() {
+      let price_array = this.lower_price + "," + this.upper_price;
       await this.$router
         .replace({
           query: Object.assign({}, this.$route.query, {
-            price: [this.arrayOfprice]
+            price: price_array
           })
         })
         .catch(() => {});
