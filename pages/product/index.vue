@@ -7,11 +7,8 @@
       </div>
 
       <div class="col-sm-9 col-8 category_right">
-        <!-- {{ meta }}
-        {{ products }} -->
-
         <template v-if="products.length">
-          <RightListSection :products="products" :meta="meta" @hit="hit" />
+          <RightListSection :products="products" :meta="meta" />
           <div class="row">
             <div class="col-md-12 text-center">
               <Pagination :meta="meta" v-if="meta.last_page > 1" />
@@ -59,9 +56,6 @@ export default {
   //   document.getElementById('app').appendChild(this.$el)
   // },
   methods: {
-    hit() {
-      this.getProduct();
-    },
     async getProduct(query = this.$route.query) {
       await this.$axios
         .$get(`api/product?per-page=8`, {

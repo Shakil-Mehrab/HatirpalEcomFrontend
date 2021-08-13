@@ -50,11 +50,6 @@ export default {
       type: Array
     }
   },
-  watch: {
-    "$route.query"() {
-      this.$emit("hit");
-    }
-  },
   methods: {
     link(arg) {
       return {
