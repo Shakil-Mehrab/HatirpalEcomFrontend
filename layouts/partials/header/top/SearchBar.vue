@@ -3,7 +3,7 @@
     <div class="search_select_pre_div">
       <client-only>
         <select name="user_type" id="user_type" v-model="form.user_type">
-          <option value="1" class="whitespace-wrap">
+          <option value="" class="whitespace-wrap">
             <span>Products</span>
             <svg
               class="search_icon"

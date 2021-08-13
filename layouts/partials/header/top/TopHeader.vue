@@ -1,5 +1,5 @@
 <template>
-  <div class="row top_header">
+  <div class="row top_header my-2">
     <div class="col-md-2 col-sm-12 logo">
       <nuxt-link :to="{ name: 'index' }">
         <img src="~/assets/images/logo.PNG" width="100%" alt="Logo" />

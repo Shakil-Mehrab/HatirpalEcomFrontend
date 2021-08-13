@@ -24,6 +24,11 @@
         <NewArrival v-for="n in 3" :key="n" />
       </div>
     </div>
+    <div class="container mx-auto shadow-sm my-4">
+      <div class="newarrival_row">
+        <Video />
+      </div>
+    </div>
     <br />
     <div class="container mx-auto shadow-sm">
       <div class="row bg-white">
@@ -58,6 +63,7 @@ import MyMarket from "@/components/indexPage/topSection/MyMarket";
 import MainSlider from "@/components/indexPage/topSection/MainSlider";
 import TrendingConsumer from "@/components/indexPage/topSection/TrendingConsumer";
 import NewArrival from "@/components/indexPage/NewArrival";
+import Video from "@/components/indexPage/video/Video";
 import CategoryHeading from "@/components/indexPage/Heading/CategoryHeading";
 import CategoryHeadingLeft from "@/components/indexPage/Heading/CategoryHeadingLeft";
 // import CategorySection from "@/components/indexPage/CategorySection";
@@ -75,7 +81,8 @@ export default {
     // CategorySection,
     CategoryHeading,
     CategoryHeadingLeft,
-    SlideSectionOne
+    SlideSectionOne,
+    Video
     // JustForYou,
     // SupplierRegion
   },

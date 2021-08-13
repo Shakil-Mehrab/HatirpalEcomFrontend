@@ -20,7 +20,7 @@
           :navigationEnabled="true"
         >
           <slide v-for="data in datas" :key="data.id">
-            <div class="slide_content hover_shadow">
+            <div class="slide_content animate-expand">
               <nuxt-link :to="link(data)" exact>
                 <img
                   v-if="data.thumbnail"
@@ -40,7 +40,6 @@
                   >
                 </p>
                 <!-- <p class="" v-if="data.short_description" v-html="data.short_description"></p> -->
-                <p>{{ data.categories }}</p>
               </div>
             </div>
           </slide>

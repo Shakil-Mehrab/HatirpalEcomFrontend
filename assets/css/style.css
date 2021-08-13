@@ -1,117 +1,143 @@
 /* global  */
-@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
-:root {
-  --link-color: rgb(50, 52, 63);
-  --link-violet: #003366;
-  --brand-color: #003366;
-  --extra-violet: #26e0c6;
-  --transition: all 0.5s ease-in-out;
-  --fine-border: rgb(212 212 210);
 
-  --fds-gray-10: #ebedf0;
-  --fds-gray-20: #dadde1;
-  --fds-gray-25: #ccd0d5;
-  --fds-gray-30: #bec3c9;
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+:root {
+    --link-color: rgb(50, 52, 63);
+    --link-violet: #003366;
+    --brand-color: #003366;
+    --extra-violet: #26e0c6;
+    --transition: all 0.5s ease-in-out;
+    --fine-border: rgb(212 212 210);
+    --fds-gray-10: #ebedf0;
+    --fds-gray-20: #dadde1;
+    --fds-gray-25: #ccd0d5;
+    --fds-gray-30: #bec3c9;
 }
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
+
 body {
-  font-family: "Itim", cursive;
-  background-color: var(--fds-gray-25);
-  font-size: 14px;
-  line-height: 1.28571;
-  color: rgb(46, 43, 43);
-  margin: 0px;
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  /* background-image: url("@/assets/images/background.jpeg"); */
-  background-position: center;
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+    font-family: "Itim", cursive;
+    background-color: var(--fds-gray-25);
+    font-size: 14px;
+    line-height: 1.28571;
+    color: rgb(46, 43, 43);
+    margin: 0px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* background-image: url("@/assets/images/background.jpeg"); */
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
 }
+
 h6 {
-  margin: 0px;
+    margin: 0px;
 }
+
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
 ul li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
 a {
-  text-decoration: none;
-  color: var(--link-color);
-  transition: var(--transition);
-  font-size: 16px;
+    text-decoration: none;
+    color: var(--link-color);
+    transition: var(--transition);
+    font-size: 16px;
 }
+
 a:hover {
-  color: var(--link-violet);
+    color: var(--link-violet);
 }
+
 .has-error input {
-  border: 1px solid red;
+    border: 1px solid red;
 }
+
 .brand_round_button {
-  background-color: var(--brand-color);
-  color: white;
-  border-radius: 10px;
-  padding: 0 8px;
-  overflow: hidden;
+    background-color: var(--brand-color);
+    color: white;
+    border-radius: 10px;
+    padding: 0 8px;
+    overflow: hidden;
 }
+
 .brand_border {
-  border: 1px solid var(--extra-violet);
+    border: 1px solid var(--extra-violet);
 }
+
 .btn {
-  box-shadow: unset !important;
+    box-shadow: unset !important;
 }
+
 input {
-  box-shadow: unset !important;
+    box-shadow: unset !important;
 }
+
 select {
-  box-shadow: unset !important;
+    box-shadow: unset !important;
 }
+
 .brand_button {
-  background-color: var(--brand-color);
-  color: white;
-  border-radius: 5px;
-  padding: 0 5px;
-  overflow: hidden;
+    background-color: var(--brand-color);
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px;
+    overflow: hidden;
 }
+
 .brand_shadow {
-  box-shadow: 0 0.1rem 0.25rem var(--extra-violet) !important;
+    box-shadow: 0 0.1rem 0.25rem var(--extra-violet) !important;
 }
+
 .brand_button:hover {
-  transition: var(--transition);
-  color: var(--extra-violet);
+    transition: var(--transition);
+    color: var(--extra-violet);
 }
+
 .brand_round_button:hover {
-  transition: var(--transition);
-  color: var(--extra-violet);
+    transition: var(--transition);
+    color: var(--extra-violet);
 }
+
 .has-error label {
-  color: red;
+    color: red;
 }
+
 .hover_shadow:hover {
-  box-shadow: 0.125px 1px 5px var(--brand-color) !important;
-  padding-bottom: 1px;
+    box-shadow: 0.125px 1px 5px var(--brand-color) !important;
+    padding-bottom: 1px;
 }
+
 .sale_price {
-  font-size: 15px;
+    font-size: 15px;
 }
+
 .old_price {
-  text-decoration: line-through;
-  font-size: 12px;
-  color: #757575;
+    text-decoration: line-through;
+    font-size: 12px;
+    color: #757575;
 }
+
 .brand_color {
-  color: var(--brand-color);
+    color: var(--brand-color);
 }
+
+
 /* header  */
+
 .header_full {
-  width: 100vw;
+    width: 100vw;
 }
